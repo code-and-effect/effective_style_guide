@@ -31,6 +31,8 @@ rails generate effective_style_guide:install
 
 The generator will install an initializer which describes all configuration options.
 
+You must include the bootstrap3 JS and CSS assets on your own.  They are in no way included with this gem.
+
 
 ## Usage
 

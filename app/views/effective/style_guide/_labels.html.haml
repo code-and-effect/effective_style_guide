@@ -1,0 +1,37 @@
+- variations = ['Default', 'Primary', 'Success', 'Info', 'Warning', 'Danger']
+
+%h1
+  Example heading
+  %span.label.label-default New
+
+%h2
+  Example heading
+  %span.label.label-default New
+
+%h3
+  Example heading
+  %span.label.label-default New
+
+%h4
+  Example heading
+  %span.label.label-default New
+
+%h5
+  Example heading
+  %span.label.label-default New
+
+%h6
+  Example heading
+  %span.label.label-default New
+
+%br
+
+- variations.each do |variation|
+  %span.label{:class => "label-#{variation.downcase}"}= variation
+
+%br
+%br
+
+%a{:href => '#'}
+  Inbox
+  %span.badge 42

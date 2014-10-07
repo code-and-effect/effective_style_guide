@@ -1,532 +1,88 @@
-= render :partial => 'effective/style_guide/inline_javascript'
-
-- variations = ['Default', 'Primary', 'Success', 'Info', 'Warning', 'Danger']
-
-.row.effective-kitchen-sink
+.row.effective-style-guide
   .col-sm-3
     %nav
       %ul.nav.nav-pills.nav-stacked
-        %li.active
-          %a{:href => '#typography'} Typography
-        %li
-          %a{:href => '#buttons'} Buttons
-        %li
-          %a{:href => '#navs'} Navs
-        %li
-          %a{:href => '#breadcrumbs'} Breadcrumbs
-        %li
-          %a{:href => '#pagination'} Pagination
-        %li
-          %a{:href => '#labels'} Labels & Badges
-        %li
-          %a{:href => '#jumbotron'} Jumbotron
-        %li
-          %a{:href => '#thumbnails'} Thumbnails
-        %li
-          %a{:href => '#alerts'} Alerts
-        %li
-          %a{:href => '#progressbars'} Progress Bars
-        %li
-          %a{:href => '#listgroups'} List Groups
-        %li
-          %a{:href => '#panels'} Panels
-        %li
-          %a{:href => '#wells'} Wells
-        %li
-          %a{:href => '#tables'} Tables
-        - if @datatable.present?
-          %li
-            %a{:href => '#datatables'} DataTables
-        %li
-          %a{:href => '#vertical_form'} Vertical Form
-        %li
-          %a{:href => '#horizontal_form'} Horizontal Form
-        %li
-          %a{:href => '#inline_form'} Inline Form
+        - @partials.each_with_index do |partial, index|
+          %li{:class => ('active' if index == 0)}
+            %a{:href => "##{partial.parameterize}"}= partial.titleize
 
   .col-sm-9
-    #typography.ks-example
-      %span.ks-example Typography
+    - @partials.each do |partial|
+      %div.example{:id => "#{partial.parameterize}"}
+        %span.example= partial.titleize
+        = render :partial => partial
 
-      %h1 Heading 1
-      %h2 Heading 2
-      %h3 Heading 3
-      %h4 Heading 4
-      %h5 Heading 5
-      %h6 Heading 6
-      %p
-        = 'Paragraph text. '
-        = Faker::Lorem.paragraph(8)
-      %blockquote Blockquote text.
-      %p
-        %strong Strong
-        = '-'
-        %em Emphasis
-        = '-'
-        %u Underline
-        = '-'
-        %small Small
-        = '-'
-        %a{:href => '#'} Link
-
-    #buttons.ks-example
-      %span.ks-example Buttons
-
-      %p
-        - variations.each do |variation|
-          .btn{:class => "btn-#{variation.downcase}"}= variation
-        %a.glyphicon.glyphicon-remove{:href => '#'}
-
-      %p
-        .btn-group
-          %button.btn.btn-default{:type => 'button'} Left
-          %button.btn.btn-default{:type => 'button'} Middle
-          %button.btn.btn-default{:type => 'button'} Right
-
-      %p
-        - variations.each do |variation|
-          .btn-group
-            %button.btn.dropdown-toggle{'data-toggle' => 'dropdown', :class => "btn-#{variation.downcase}"}
-              = variation
-              %span.caret
-            %ul.dropdown-menu{:role => 'menu'}
-              %li= link_to 'First', '#'
-              %li= link_to 'Second', '#'
-              %li= link_to 'Third', '#'
-              %li.divider
-              %li= link_to 'Separated', '#'
-
-      %p
-        .btn-toolbar{:role => 'toolbar'}
-          .btn-group
-            %button.btn.btn-default{:type => 'button'} 1
-            %button.btn.btn-default{:type => 'button'} 2
-            %button.btn.btn-default{:type => 'button'} 3
-          .btn-group
-            %button.btn.btn-default{:type => 'button'} 4
-            %button.btn.btn-default{:type => 'button'} 5
-            %button.btn.btn-default{:type => 'button'} 6
-          .btn-group
-            %button.btn.btn-default{:type => 'button'} 7
-
-      %p
-        - variations.each do |variation|
-          .btn-group
-            %button.btn{:class => "btn-#{variation.downcase}"}=variation
-            %button.btn.dropdown-toggle{'data-toggle' => 'dropdown', :class => "btn-#{variation.downcase}"}
-              %span.caret
-              %span.sr-only Toggle Dropdown
-            %ul.dropdown-menu{:role => 'menu'}
-              %li= link_to 'First', '#'
-              %li= link_to 'Second', '#'
-              %li= link_to 'Third', '#'
-              %li.divider
-              %li= link_to 'Separated', '#'
-
-    #navs.ks-example
-      %span.ks-example Navs
-
-      %p
-        %ul.nav.nav-tabs
-          %li.active= link_to 'First Item', '#'
-          %li= link_to 'Second Item', '#'
-          %li= link_to 'Third Item', '#'
-          %li.dropdown
-            %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
-              Dropdown
-              %span.caret
-            %ul.dropdown-menu{:role => 'menu'}
-              %li= link_to 'First', '#'
-              %li= link_to 'Second', '#'
-              %li= link_to 'Third', '#'
-              %li.divider
-              %li= link_to 'Separated', '#'
-
+    - 10.times do
       %br
 
-      %p
-        %ul.nav.nav-pills
-          %li= link_to 'First Item', '#'
-          %li= link_to 'Second Item', '#'
-          %li.active= link_to 'Third Item', '#'
-          %li.dropdown
-            %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
-              Dropdown
-              %span.caret
-            %ul.dropdown-menu{:role => 'menu'}
-              %li= link_to 'First', '#'
-              %li= link_to 'Second', '#'
-              %li= link_to 'Third', '#'
-              %li.divider
-              %li= link_to 'Separated', '#'
-
-    #breadcrumbs.ks-example
-      %span.ks-example Breadcrumbs
-
-      %p
-        %ol.breadcrumb
-          %li.active Home
-
-        %ol.breadcrumb
-          %li= link_to 'Home', '#'
-          %li.active Category
-
-        %ol.breadcrumb
-          %li= link_to 'Home', '#'
-          %li= link_to 'Category', '#'
-          %li.active Page
-
-    #pagination.ks-example
-      %span.ks-example Pagination
-
-      %ul.pagination
-        %li.disabled
-          %a{:href => '#'} &laquo;
-        - 1.upto(10).each do |x|
-          %li{:class => ('active' if x == 1)}
-            %a{:href => '#'}= x
-        %li
-          %a{:href => '#'} &raquo;
-
-      %ul.pagination.pagination-lg
-        %li
-          %a{:href => '#'} &laquo;
-        - 1.upto(10).each do |x|
-          %li
-            %a{:href => '#'}= x
-        %li
-          %a{:href => '#'} &raquo;
-
-      %ul.pagination.pagination-sm
-        %li
-          %a{:href => '#'} &laquo;
-        - 1.upto(10).each do |x|
-          %li
-            %a{:href => '#'}= x
-        %li
-          %a{:href => '#'} &raquo;
-
-      %ul.pager
-        %li
-          %a{:href => '#'} Previous
-        %li
-          %a{:href => '#'} Next
-
-      %ul.pager
-        %li.previous
-          %a{:href => '#'} &larr; Older
-        %li.next
-          %a{:href => '#'} Newer &rarr;
-
-    #labels.ks-example
-      %span.ks-example Labels & Badges
-
-      %h1
-        Example heading
-        %span.label.label-default New
-
-      %h2
-        Example heading
-        %span.label.label-default New
-
-      %h3
-        Example heading
-        %span.label.label-default New
-
-      %h4
-        Example heading
-        %span.label.label-default New
-
-      %h5
-        Example heading
-        %span.label.label-default New
-
-      %h6
-        Example heading
-        %span.label.label-default New
-
-      %br
-
-      - variations.each do |variation|
-        %span.label{:class => "label-#{variation.downcase}"}= variation
-
-      %br
-      %br
-
-      %a{:href => '#'}
-        Inbox
-        %span.badge 42
-
-    #jumbotron.ks-example
-      %span.ks-example Jumbotron
-
-      .jumbotron
-        %h1 Hello, world!
-        %p= Faker::Lorem.paragraph(3)
-        %p
-          %a.btn.btn-primary.btn-lg Learn More
-
-
-    #thumbnails.ks-example
-      %span.ks-example Thumbnails
-
-      .row
-        - 4.times do
-          .col-sm-3
-            %a.thumbnail{:href => '#'}
-              %img{:src => 'http://placekitten.com/171/180', :height => 180, :width => 171}
-
-      .row
-        - 3.times do
-          .col-sm-4
-            .thumbnail
-              %img{:src => 'http://placekitten.com/242/200', :height => 200, :width => 242}
-              .caption
-                %h3 Thumbnail Label
-                %p Cumque iste repellat rerum asperiores libero. Omnis quia et illo. Dignissimos ut quod debitis.
-                %p
-                  %a.btn.btn-primary Save
-                  %a.btn.btn-default Cancel
-
-    #alerts.ks-example
-      %span.ks-example Alerts
-
-      - variations.last(4).each do |variation|
-        .alert{:class => "alert-#{variation.downcase}"}
-          = "This is a #{variation.downcase} alert with a "
-          %a.alert-link{:href => '#'} link to somewhere
-
-      - variations.last(4).each do |variation|
-        .alert.alert-dismissable{:class => "alert-#{variation.downcase}"}
-          %button.close{:type => 'button', 'data-dismiss' => 'alert'}
-            %span &times;
-            %span.sr-only Close
-          %strong= variation
-          = "This is a dismissable #{variation.downcase} alert"
-
-    #progressbars.ks-example
-      %span.ks-example Progress Bars
-
-      .progress
-        .progress-bar{:role => 'progressbar', 'aria-valuenow' => 40, 'aria-valuemin' => 0, 'aria-valuemax' => 100, :style => 'width: 40%'}
-          %span.sr-only 40% Complete
-
-      .progress
-        .progress-bar{:role => 'progressbar', 'aria-valuenow' => 60, 'aria-valuemin' => 0, 'aria-valuemax' => 100, :style => 'width: 60%'}
-          60%
-
-      .progress
-        .progress-bar{:role => 'progressbar', 'aria-valuenow' => 0, 'aria-valuemin' => 0, 'aria-valuemax' => 100}
-          0%
-
-      .progress
-        .progress-bar{:role => 'progressbar', 'aria-valuenow' => 2, 'aria-valuemin' => 0, 'aria-valuemax' => 100, :style => 'width: 2%'}
-          2%
-
-      - variations.last(4).each_with_index do |variation, index|
-        .progress
-          .progress-bar{:class => "progress-bar-#{variation.downcase}", :role => 'progressbar', 'aria-valuenow' => (index+2)*20, 'aria-valuemin' => 0, 'aria-valuemax' => 100, :style => "width: #{(index+2)*20}%"}
-            = "#{(index+2)*20}%"
-
-      .progress
-        .progress-bar.progress-bar-striped.active{:role => 'progressbar', 'aria-valuenow' => 95, 'aria-valuemin' => 0, 'aria-valuemax' => 100, :style => "width: 95%"}
-
-      .progress
-        - variations.last(4).each_with_index do |variation, index|
-          .progress-bar{:class => "progress-bar-#{variation.downcase}", :role => 'progressbar', 'aria-valuenow' => (index+1)*20, 'aria-valuemin' => 0, 'aria-valuemax' => 100, :style => "width: 22%"}
-
-    #listgroups.ks-example
-      %span.ks-example List Groups
-
-      %ul.list-group
-        - 4.times do
-          %li.list-group-item= Faker::Lorem.sentence(1)
-
-      %ul.list-group
-        - 4.times do
-          %li.list-group-item
-            %span.badge= [*1..20].sample
-            = Faker::Lorem.sentence(1)
-
-      %ul.list-group
-        - 4.times do |x|
-          %a.list-group-item{:href => '#', :class => ('active' if x == 0)}= Faker::Lorem.sentence(1)
-
-      %ul.list-group
-        - 4.times do |x|
-          %a.list-group-item{:href => '#', :class => ('disabled' if x == 0)}= Faker::Lorem.sentence(1)
-
-      .list-group
-        - 4.times do |x|
-          %a.list-group-item{:href => '#', :class => ('active' if x == 1)}
-            %h4.list-group-item-heading= Faker::Lorem.sentence(1)
-            %p.list-group-item-text= Faker::Lorem.sentence(3)
-
-    #panels.ks-example
-      %span.ks-example Panels
-
-      .panel.panel-default
-        .panel-body= Faker::Lorem.sentence(3)
-
-      - variations.each do |variation|
-        .panel{:class => "panel-#{variation.downcase}"}
-          .panel-heading= "#{variation} Panel"
-          .panel-body= Faker::Lorem.sentence(3)
-
-      .panel.panel-default
-        .panel-heading
-          %h3= Faker::Lorem.sentence(1)
-        .panel-body= Faker::Lorem.sentence(3)
-
-      .panel.panel-default
-        .panel-body= Faker::Lorem.sentence(3)
-        .panel-footer= Faker::Lorem.sentence(1)
-
-
-      .panel.panel-default
-        .panel-heading Table Panel (any non-bordered table will work here)
-        %table.table
-          %thead
-            %tr
-              %th #
-              %th First Name
-              %th Last Name
-              %th Email
-          %tbody
-            - 5.times do
-              %tr
-                %td= [*1..100].sample
-                %td= Faker::Name.first_name
-                %td= Faker::Name.last_name
-                %td= Faker::Internet.email
-
-    #wells.ks-example
-      %span.ks-example Wells
-
-      .well Look, I'm in a well!
-      .well.well-lg Look, I'm in a large well!
-      .well.well-sm Look, I'm in a small well!
-
-    #tables.ks-example
-      %span.ks-example Tables
-
-      - [nil, 'table-hover', 'table-striped', 'table-bordered', 'table-condensed'].each do |variation|
-        %table.table{:class => variation}
-          %thead
-            %tr
-              %th #
-              %th First Name
-              %th Last Name
-              %th Email
-          %tbody
-            - 5.times do
-              %tr
-                %td= [*1..100].sample
-                %td= Faker::Name.first_name
-                %td= Faker::Name.last_name
-                %td= Faker::Internet.email
-
-    - if @datatable.present?
-      #datatables.ks-example
-        %span.ks-example DataTables
-        %br
-        = render_datatable @datatable
-
-    #vertical_form.ks-example
-      %span.ks-example Vertical Form
-
-      = simple_form_for @style_guide, :url => '/' do |f|
-        = f.input :title, :hint => 'please enter a title (this is a standard text field)'
-        = f.input :email, :hint => 'please enter an email address (this is an email field)'
-        = f.input :password, :hint => 'please enter a password (this is a password field)'
-        = f.input :number, :hint => 'please enter a number (this is a number field)'
-        = f.input :range, :as => :range, :hint => 'please enter a number range (this is a range field)'
-        = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is a select field)'
-        = f.input :drink, :as => :check_boxes, :wrapper => :vertical_inline_radio_and_checkboxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :vertical_inline_radio_and_checkboxes field)'
-        = f.input :food, :as => :radio_buttons, :wrapper => :vertical_inline_radio_and_checkboxes, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons :wrapper => :vertical_inline_radio_and_checkboxes field)'
-        = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'
-        = f.input :archived, :hint => 'please select true or false (this is a boolean field)'
-        = f.input :drink, :as => :check_boxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes field)'
-        = f.input :food, :as => :radio_buttons, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons field)'
-        = f.button :submit
-
-      %hr
-      .inline-ks-example Invalid Vertical Form
-
-      = simple_form_for @invalid_style_guide, :url => '/' do |f|
-        = f.input :title, :hint => 'please enter a title (this is a standard text field)'
-        = f.input :email, :hint => 'please enter an email address (this is an email field)'
-        = f.input :password, :hint => 'please enter a password (this is a password field)'
-        = f.input :number, :hint => 'please enter a number (this is a number field)'
-        = f.input :range, :as => :range, :hint => 'please enter a number range (this is a range field)'
-        = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is a select field)'
-        = f.input :drink, :as => :check_boxes, :wrapper => :vertical_inline_radio_and_checkboxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :vertical_inline_radio_and_checkboxes field)'
-        = f.input :food, :as => :radio_buttons, :wrapper => :vertical_inline_radio_and_checkboxes, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons :wrapper => :vertical_inline_radio_and_checkboxes field)'
-        = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'
-        = f.input :archived, :hint => 'please select true or false (this is a boolean field)'
-        = f.input :drink, :as => :check_boxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes field)'
-        = f.input :food, :as => :radio_buttons, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons field)'
-        = f.button :submit
-
-    #horizontal_form.ks-example
-      %span.ks-example Horizontal Form
-
-      = simple_form_for @style_guide, :html => {:class => 'form-horizontal'}, :wrapper => :horizontal_form, :wrapper_mappings => SimpleForm.wrapper_mappings[:horizontal_form], :url => '/' do |f|
-        = f.input :title, :hint => 'please enter a title (this is a standard text field)'
-        = f.input :email, :hint => 'please enter an email address (this is an email field)'
-        = f.input :password, :hint => 'please enter a password (this is a password field)'
-        = f.input :number, :hint => 'please enter a number (this is a number field)'
-        = f.input :range, :as => :range, :hint => 'please enter a number range (this is a range field)'
-        = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is a select field)'
-        = f.input :drink, :as => :check_boxes, :wrapper => :horizontal_inline_radio_and_checkboxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :horizontal_inline_radio_and_checkboxes field)'
-        = f.input :food, :as => :radio_buttons, :wrapper => :horizontal_inline_radio_and_checkboxes, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons :wrapper => :horizontal_inline_radio_and_checkboxes field)'
-        = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'
-        = f.input :archived, :hint => 'please select true or false (this is a boolean field)'
-        = f.input :drink, :as => :check_boxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes field)'
-        = f.input :food, :as => :radio_buttons, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons field)'
-        .form-group
-          .col-sm-offset-3.col-sm-9= f.button :submit
-
-      %hr
-      .inline-ks-example Invalid Horizontal Form
-
-      = simple_form_for @invalid_style_guide, :html => {:class => 'form-horizontal'}, :wrapper => :horizontal_form, :wrapper_mappings => SimpleForm.wrapper_mappings[:horizontal_form], :url => '/' do |f|
-        = f.input :title, :hint => 'please enter a title (this is a standard text field)'
-        = f.input :email, :hint => 'please enter an email address (this is an email field)'
-        = f.input :password, :hint => 'please enter a password (this is a password field)'
-        = f.input :number, :hint => 'please enter a number (this is a number field)'
-        = f.input :range, :as => :range, :hint => 'please enter a number range (this is a range field)'
-        = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is a select field)'
-        = f.input :drink, :as => :check_boxes, :wrapper => :horizontal_inline_radio_and_checkboxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :horizontal_inline_radio_and_checkboxes field)'
-        = f.input :food, :as => :radio_buttons, :wrapper => :horizontal_inline_radio_and_checkboxes, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons :wrapper => :horizontal_inline_radio_and_checkboxes field)'
-        = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'
-        = f.input :archived, :wrapper => :horizontal_boolean, :hint => 'please select true or false (this is a boolean field)'
-        = f.input :drink, :wrapper => :horizontal_radio_and_checkboxes, :as => :check_boxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes field)'
-        = f.input :food, :wrapper => :horizontal_radio_and_checkboxes, :as => :radio_buttons, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons field)'
-        .form-group
-          .col-sm-offset-3.col-sm-9= f.button :submit
-
-    #inline_form.ks-example
-      %span.ks-example Inline Form
-
-      = simple_form_for @style_guide, :html => {:class => 'form-inline'}, :wrapper => :inline_form, :url => '/' do |f|
-        = f.input :title, :placeholder => 'Enter title'
-        = f.input :email, :placeholder => 'Enter email'
-        = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}
-        = f.input :archived
-        = f.button :submit
-
-      %hr
-      .inline-ks-example Invalid Inline Form
-
-      = simple_form_for @invalid_style_guide, :html => {:class => 'form-inline'}, :wrapper => :inline_form, :url => '/' do |f|
-        = f.input :title, :placeholder => 'Enter title'
-        = f.input :email, :placeholder => 'Enter email'
-        = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}
-        = f.input :archived
-        = f.button :submit
-
-
-    - 75.times do
-      %br
+:javascript
+  var initStyleGuide = function() {
+    $('.effective-style-guide > div > nav').affix({
+      offset: { top: $('.effective-style-guide > div > nav').offset().top - 20 }
+    });
+
+    $('body').scrollspy({ target: '.effective-style-guide > div > nav', offset: 100 });
+
+    $('.effective-style-guide > div > nav > ul a').on('click', function(event) {
+      event.preventDefault();
+      target = $(event.currentTarget).attr('href')
+      if(target.length > 0) { $('html, body').scrollTop($(target).offset().top); }
+    });
+  };
+
+  $(document).ready(function() { initStyleGuide(); });
+  $(document).on('page:change', function() { initStyleGuide(); });
+
+:css
+  .effective-style-guide nav {
+    display: inline-block;
+  }
+
+  .effective-style-guide .nav > li > a {
+    padding: 5px 10px;
+  }
+
+  .effective-style-guide .affix {
+    position: fixed;
+    top: 20px;
+  }
+
+  .effective-style-guide div.example {
+    background-color: #fff;
+    border-color: #ddd;
+    border-radius: 4px 4px 0 0;
+    border-width: 1px;
+    box-shadow: none;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 30px;
+    border-style: solid;
+    padding: 45px 15px 15px;
+    position: relative;
+  }
+
+  .effective-style-guide span.example {
+    color: #959595;
+    font-size: 12px;
+    font-weight: 700;
+    left: 15px;
+    letter-spacing: 1px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 15px;
+  }
+
+  .effective-style-guide .inline-example {
+    color: #959595;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  / .effective-style-guide .inline-radio-or-checkboxes > span {
+  /   display: inline-block;
+  /   margin: 0px 10px 0px 0px;
+  / }
 

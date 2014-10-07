@@ -1,0 +1,5 @@
+%br
+- if defined?(EffectiveDatatables)
+  = render_datatable Effective::Datatables::StyleGuide.new()
+- else
+  %p Please install the effective_datatables gem

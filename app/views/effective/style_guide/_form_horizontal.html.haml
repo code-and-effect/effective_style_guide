@@ -1,0 +1,34 @@
+= simple_form_for Effective::StyleGuide.new(), :html => {:class => 'form-horizontal'}, :wrapper => :horizontal_form, :wrapper_mappings => SimpleForm.wrapper_mappings[:horizontal_form], :url => '/' do |f|
+  = f.input :title, :hint => 'please enter a title (this is a standard text field)'
+  = f.input :email, :hint => 'please enter an email address (this is an email field)'
+  = f.input :password, :hint => 'please enter a password (this is a password field)'
+  = f.input :number, :hint => 'please enter a number (this is a number field)'
+  = f.input :range, :as => :range, :hint => 'please enter a number range (this is a range field)'
+  = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is a select field)'
+  = f.input :drink, :as => :check_boxes, :wrapper => :horizontal_inline_radio_and_checkboxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :horizontal_inline_radio_and_checkboxes field)'
+  = f.input :food, :as => :radio_buttons, :wrapper => :horizontal_inline_radio_and_checkboxes, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons :wrapper => :horizontal_inline_radio_and_checkboxes field)'
+  = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'
+  = f.input :archived, :hint => 'please select true or false (this is a boolean field)'
+  = f.input :drink, :as => :check_boxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes field)'
+  = f.input :food, :as => :radio_buttons, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons field)'
+  .form-group
+    .col-sm-offset-3.col-sm-9= f.button :submit
+
+%hr
+.inline-example Form Horizontal Invalid State
+
+= simple_form_for Effective::StyleGuide.new().tap { |s| s.valid? }, :html => {:class => 'form-horizontal'}, :wrapper => :horizontal_form, :wrapper_mappings => SimpleForm.wrapper_mappings[:horizontal_form], :url => '/' do |f|
+  = f.input :title, :hint => 'please enter a title (this is a standard text field)'
+  = f.input :email, :hint => 'please enter an email address (this is an email field)'
+  = f.input :password, :hint => 'please enter a password (this is a password field)'
+  = f.input :number, :hint => 'please enter a number (this is a number field)'
+  = f.input :range, :as => :range, :hint => 'please enter a number range (this is a range field)'
+  = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is a select field)'
+  = f.input :drink, :as => :check_boxes, :wrapper => :horizontal_inline_radio_and_checkboxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :horizontal_inline_radio_and_checkboxes field)'
+  = f.input :food, :as => :radio_buttons, :wrapper => :horizontal_inline_radio_and_checkboxes, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons :wrapper => :horizontal_inline_radio_and_checkboxes field)'
+  = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'
+  = f.input :archived, :wrapper => :horizontal_boolean, :hint => 'please select true or false (this is a boolean field)'
+  = f.input :drink, :wrapper => :horizontal_radio_and_checkboxes, :as => :check_boxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes field)'
+  = f.input :food, :wrapper => :horizontal_radio_and_checkboxes, :as => :radio_buttons, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons field)'
+  .form-group
+    .col-sm-offset-3.col-sm-9= f.button :submit

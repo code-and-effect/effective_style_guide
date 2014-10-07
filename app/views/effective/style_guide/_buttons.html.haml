@@ -1,0 +1,52 @@
+- variations = ['Default', 'Primary', 'Success', 'Info', 'Warning', 'Danger']
+
+%p
+  - variations.each do |variation|
+    .btn{:class => "btn-#{variation.downcase}"}= variation
+  %a.glyphicon.glyphicon-remove{:href => '#'}
+
+%p
+  .btn-group
+    %button.btn.btn-default{:type => 'button'} Left
+    %button.btn.btn-default{:type => 'button'} Middle
+    %button.btn.btn-default{:type => 'button'} Right
+
+%p
+  - variations.each do |variation|
+    .btn-group
+      %button.btn.dropdown-toggle{'data-toggle' => 'dropdown', :class => "btn-#{variation.downcase}"}
+        = variation
+        %span.caret
+      %ul.dropdown-menu{:role => 'menu'}
+        %li= link_to 'First', '#'
+        %li= link_to 'Second', '#'
+        %li= link_to 'Third', '#'
+        %li.divider
+        %li= link_to 'Separated', '#'
+
+%p
+  .btn-toolbar{:role => 'toolbar'}
+    .btn-group
+      %button.btn.btn-default{:type => 'button'} 1
+      %button.btn.btn-default{:type => 'button'} 2
+      %button.btn.btn-default{:type => 'button'} 3
+    .btn-group
+      %button.btn.btn-default{:type => 'button'} 4
+      %button.btn.btn-default{:type => 'button'} 5
+      %button.btn.btn-default{:type => 'button'} 6
+    .btn-group
+      %button.btn.btn-default{:type => 'button'} 7
+
+%p
+  - variations.each do |variation|
+    .btn-group
+      %button.btn{:class => "btn-#{variation.downcase}"}=variation
+      %button.btn.dropdown-toggle{'data-toggle' => 'dropdown', :class => "btn-#{variation.downcase}"}
+        %span.caret
+        %span.sr-only Toggle Dropdown
+      %ul.dropdown-menu{:role => 'menu'}
+        %li= link_to 'First', '#'
+        %li= link_to 'Second', '#'
+        %li= link_to 'Third', '#'
+        %li.divider
+        %li= link_to 'Separated', '#'

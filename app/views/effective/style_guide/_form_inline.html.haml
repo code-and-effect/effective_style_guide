@@ -1,0 +1,16 @@
+= simple_form_for Effective::StyleGuide.new(), :html => {:class => 'form-inline'}, :wrapper => :inline_form, :url => '/' do |f|
+  = f.input :title, :placeholder => 'Enter title'
+  = f.input :email, :placeholder => 'Enter email'
+  = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}
+  = f.input :archived
+  = f.button :submit
+
+%hr
+.inline-example Inline Form Invalid State
+
+= simple_form_for Effective::StyleGuide.new().tap { |s| s.valid? }, :html => {:class => 'form-inline'}, :wrapper => :inline_form, :url => '/' do |f|
+  = f.input :title, :placeholder => 'Enter title'
+  = f.input :email, :placeholder => 'Enter email'
+  = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}
+  = f.input :archived
+  = f.button :submit

@@ -1,0 +1,38 @@
+%ul.pagination
+  %li.disabled
+    %a{:href => '#'} &laquo;
+  - 1.upto(10).each do |x|
+    %li{:class => ('active' if x == 1)}
+      %a{:href => '#'}= x
+  %li
+    %a{:href => '#'} &raquo;
+
+%ul.pagination.pagination-lg
+  %li
+    %a{:href => '#'} &laquo;
+  - 1.upto(10).each do |x|
+    %li
+      %a{:href => '#'}= x
+  %li
+    %a{:href => '#'} &raquo;
+
+%ul.pagination.pagination-sm
+  %li
+    %a{:href => '#'} &laquo;
+  - 1.upto(10).each do |x|
+    %li
+      %a{:href => '#'}= x
+  %li
+    %a{:href => '#'} &raquo;
+
+%ul.pager
+  %li
+    %a{:href => '#'} Previous
+  %li
+    %a{:href => '#'} Next
+
+%ul.pager
+  %li.previous
+    %a{:href => '#'} &larr; Older
+  %li.next
+    %a{:href => '#'} Newer &rarr;

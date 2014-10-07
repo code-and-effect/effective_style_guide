@@ -1,0 +1,23 @@
+%ul.list-group
+  - 4.times do
+    %li.list-group-item= Faker::Lorem.sentence(1)
+
+%ul.list-group
+  - 4.times do
+    %li.list-group-item
+      %span.badge= [*1..20].sample
+      = Faker::Lorem.sentence(1)
+
+%ul.list-group
+  - 4.times do |x|
+    %a.list-group-item{:href => '#', :class => ('active' if x == 0)}= Faker::Lorem.sentence(1)
+
+%ul.list-group
+  - 4.times do |x|
+    %a.list-group-item{:href => '#', :class => ('disabled' if x == 0)}= Faker::Lorem.sentence(1)
+
+.list-group
+  - 4.times do |x|
+    %a.list-group-item{:href => '#', :class => ('active' if x == 1)}
+      %h4.list-group-item-heading= Faker::Lorem.sentence(1)
+      %p.list-group-item-text= Faker::Lorem.sentence(3)

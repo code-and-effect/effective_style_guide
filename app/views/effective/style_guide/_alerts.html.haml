@@ -1,0 +1,14 @@
+- variations = ['Default', 'Primary', 'Success', 'Info', 'Warning', 'Danger']
+
+- variations.last(4).each do |variation|
+  .alert{:class => "alert-#{variation.downcase}"}
+    = "This is a #{variation.downcase} alert with a "
+    %a.alert-link{:href => '#'} link to somewhere
+
+- variations.last(4).each do |variation|
+  .alert.alert-dismissable{:class => "alert-#{variation.downcase}"}
+    %button.close{:type => 'button', 'data-dismiss' => 'alert'}
+      %span &times;
+      %span.sr-only Close
+    %strong= variation
+    = "This is a dismissable #{variation.downcase} alert"

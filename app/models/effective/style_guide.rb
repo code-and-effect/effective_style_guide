@@ -21,7 +21,7 @@ module Effective
     column :drink, :string
     column :food, :string
 
-    validates_presence_of :title, :email, :password, :number, :range, :category, :content, :archived, :drink, :food
+    validates_presence_of :id, :title, :email, :password, :number, :range, :category, :content, :archived, :drink, :food
 
   end
 end

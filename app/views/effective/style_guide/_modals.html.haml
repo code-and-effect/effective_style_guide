@@ -1,0 +1,69 @@
+%button.btn.btn-primary{'data-toggle' => 'modal', 'data-target' => '#modalStandard'} Open Standard Modal
+
+#modalStandard.modal.fade{:tabindex => -1, :role => 'dialog', 'aria-hidden' => true, 'arai-labelledby' => 'modalStandardLabel'}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{'data-dismiss' => 'modal'}
+          %span{'aria-hidden' => true} &times;
+          %span.sr-only Close
+        %h4.modal-title{:id => 'modalStandardLabel'} Standard Modal Title
+      .modal-body
+        %h4 Text in a modal
+        %p= Faker::Lorem.paragraph(3)
+        %br
+
+        %h4 Tooltips in a standard modal
+        %p
+          This is a
+          %a{:href => '#', 'data-toggle' => 'tooltip', 'title' => 'This is a tooltip'} Link with Tooltip
+        %br
+
+        %h4 Overflowing text to show scroll behaviour
+        - 15.times do
+          %p= Faker::Lorem.paragraph(3)
+        %br
+
+      .modal-footer
+        %button.btn.btn-primary{:type => 'button'} Save Changes
+        %button.btn.btn-default{'data-dismiss' => 'modal'} Close
+
+
+%button.btn.btn-primary{'data-toggle' => 'modal', 'data-target' => '#modalLarge'} Open Large Modal
+
+#modalLarge.modal.fade{:tabindex => -1, :role => 'dialog', 'aria-hidden' => true, 'arai-labelledby' => 'modalLargeLabel'}
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        %button.close{'data-dismiss' => 'modal'}
+          %span{'aria-hidden' => true} &times;
+          %span.sr-only Close
+        %h4.modal-title{:id => 'modalLargeLabel'} Large Modal Title
+      .modal-body
+        %h4 Text in a large modal
+        %p= Faker::Lorem.paragraph(3)
+        %br
+
+      .modal-footer
+        %button.btn.btn-primary{:type => 'button'} Save Changes
+        %button.btn.btn-default{'data-dismiss' => 'modal'} Close
+
+%button.btn.btn-primary{'data-toggle' => 'modal', 'data-target' => '#modalSmall'} Open Small Modal
+
+#modalSmall.modal.fade{:tabindex => -1, :role => 'dialog', 'aria-hidden' => true, 'arai-labelledby' => 'modalSmallLabel'}
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        %button.close{'data-dismiss' => 'modal'}
+          %span{'aria-hidden' => true} &times;
+          %span.sr-only Close
+        %h4.modal-title{:id => 'modalSmallLabel'} Small Modal Title
+      .modal-body
+        %h4 Text in a small modal
+        %p= Faker::Lorem.paragraph(3)
+        %br
+
+      .modal-footer
+        %button.btn.btn-primary{:type => 'button'} Save Changes
+        %button.btn.btn-default{'data-dismiss' => 'modal'} Close
+

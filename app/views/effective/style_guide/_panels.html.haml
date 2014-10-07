@@ -1,0 +1,36 @@
+- variations = ['Default', 'Primary', 'Success', 'Info', 'Warning', 'Danger']
+
+.panel.panel-default
+  .panel-body= Faker::Lorem.sentence(3)
+
+- variations.each do |variation|
+  .panel{:class => "panel-#{variation.downcase}"}
+    .panel-heading= "#{variation} Panel"
+    .panel-body= Faker::Lorem.sentence(3)
+
+.panel.panel-default
+  .panel-heading
+    %h3= Faker::Lorem.sentence(1)
+  .panel-body= Faker::Lorem.sentence(3)
+
+.panel.panel-default
+  .panel-body= Faker::Lorem.sentence(3)
+  .panel-footer= Faker::Lorem.sentence(1)
+
+
+.panel.panel-default
+  .panel-heading Table Panel (any non-bordered table will work here)
+  %table.table
+    %thead
+      %tr
+        %th #
+        %th First Name
+        %th Last Name
+        %th Email
+    %tbody
+      - 5.times do
+        %tr
+          %td= [*1..100].sample
+          %td= Faker::Name.first_name
+          %td= Faker::Name.last_name
+          %td= Faker::Internet.email

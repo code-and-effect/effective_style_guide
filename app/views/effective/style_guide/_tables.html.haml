@@ -1,0 +1,15 @@
+- [nil, 'table-hover', 'table-striped', 'table-bordered', 'table-condensed'].each do |variation|
+  %table.table{:class => variation}
+    %thead
+      %tr
+        %th #
+        %th First Name
+        %th Last Name
+        %th Email
+    %tbody
+      - 5.times do
+        %tr
+          %td= [*1..100].sample
+          %td= Faker::Name.first_name
+          %td= Faker::Name.last_name
+          %td= Faker::Internet.email

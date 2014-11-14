@@ -2,6 +2,8 @@
   = f.input :title, :hint => 'please enter a title (this is a standard text field)'
   = f.input :email, :hint => 'please enter an email address (this is an email field)'
   = f.input :password, :hint => 'please enter a password (this is a password field)'
+  - if defined?(EffectiveOrders)
+    = f.input :price, :as => :price, :hint => 'please enter a price (this is a price field from EffectiveOrders)'
   = f.input :number, :hint => 'please enter a number (this is a number field)'
   = f.input :range, :as => :range, :hint => 'please enter a number range (this is a range field)'
   = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is a select field)'
@@ -20,6 +22,8 @@
   = f.input :title, :hint => 'please enter a title (this is a standard text field)'
   = f.input :email, :hint => 'please enter an email address (this is an email field)'
   = f.input :password, :hint => 'please enter a password (this is a password field)'
+  - if defined?(EffectiveOrders)
+    = f.input :price, :as => :price, :hint => 'please enter a price (this is a price field from EffectiveOrders)'
   = f.input :number, :hint => 'please enter a number (this is a number field)'
   = f.input :range, :as => :range, :hint => 'please enter a number range (this is a range field)'
   = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is a select field)'

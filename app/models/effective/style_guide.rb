@@ -20,8 +20,9 @@ module Effective
     column :archived, :boolean
     column :drink, :string
     column :food, :string
+    column :price, :integer
 
-    validates_presence_of :id, :title, :email, :password, :number, :range, :category, :content, :archived, :drink, :food
+    validates_presence_of :id, :title, :email, :password, :number, :range, :category, :content, :archived, :drink, :food, :price
 
   end
 end

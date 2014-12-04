@@ -16,7 +16,7 @@ Works with simple_form to ensure that the generated form HTML matches the bootst
 Add to your Gemfile:
 
 ```ruby
-gem 'effective_style_guide', :git => 'https://github.com/code-and-effect/effective_style_guide.git'
+gem 'effective_style_guide'
 ```
 
 Run the bundle command to install it:
@@ -33,8 +33,7 @@ rails generate effective_style_guide:install
 
 The generator will install an initializer which describes all configuration options.
 
-You must include the bootstrap3 JS and CSS assets on your own.  They are in no way included with this gem.
-
+You must include the Twitter Bootstrap3 Javascript and CSS assets on your own.  They are not included with this gem.
 
 ## Usage
 
@@ -297,9 +296,7 @@ It is intended for flow through to CanCan or Pundit, but that is not required.
 
 This method is called by all controller actions with the appropriate action and resource
 
-Action will be one of [:index, :show, :new, :create, :edit, :update, :destroy]
-
-Resource will the appropriate Effective::Something ActiveRecord object or class
+Action will be `:show` and the resource `Effective::StyleGuide.new()`
 
 The authorization method is defined in the initializer file:
 
@@ -356,7 +353,6 @@ Run tests by:
 ```ruby
 rake spec
 ```
-
 
 ## Contributing
 

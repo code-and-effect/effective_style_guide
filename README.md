@@ -1,5 +1,7 @@
 # Effective Style Guide
 
+Ensure that your custom CSS theme looks good with all Twitter Bootstrap3 html components.
+
 Creates a /styleguide page that renders the correct HTML for all bootstrap3 (v3.2.0) components.
 
 Use this page to ensure that your custom CSS theme looks good with the bootstrap3 components.
@@ -345,7 +347,7 @@ MIT License.  Copyright Code and Effect Inc. http://www.codeandeffect.com
 You are not granted rights or licenses to the trademarks of Code and Effect
 
 
-### Testing
+## Testing
 
 The test suite for this gem is unfortunately not yet complete.
 
@@ -354,3 +356,15 @@ Run tests by:
 ```ruby
 rake spec
 ```
+
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Bonus points for test coverage
+6. Create new Pull Request
+
+

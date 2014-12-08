@@ -12,11 +12,12 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/code-and-effect/effective_style_guide"
   s.summary     = "Ensure that your custom CSS theme looks good with all Twitter Bootstrap3 html components."
   s.description = "Ensure that your custom CSS theme looks good with all Twitter Bootstrap3 html components."
+  s.licenses    = ['MIT']
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "rails"
+  s.add_dependency "rails", [">= 3.2.0"]
   s.add_dependency "coffee-rails"
   s.add_dependency "haml"
   s.add_dependency "simple_form"

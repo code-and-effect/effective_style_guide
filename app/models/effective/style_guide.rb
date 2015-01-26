@@ -1,11 +1,13 @@
 module Effective
   class StyleGuide < ActiveRecord::Base
+    acts_as_asset_box :files => 1..6 if defined?(EffectiveAssets)
+
     def self.columns
-      @columns ||= [];
+      @columns ||= []
     end
 
     def self.column(name, sql_type = nil, default = nil, null = true)
-      columns << ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
+      columns << ::ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
     end
 
     column :id, :integer
@@ -21,8 +23,9 @@ module Effective
     column :drink, :string
     column :food, :string
     column :price, :integer
+    column :updated_at, :datetime
 
-    validates_presence_of :id, :title, :email, :password, :number, :range, :category, :content, :archived, :drink, :food, :price
+    validates_presence_of :id, :title, :email, :password, :number, :range, :category, :content, :archived, :drink, :food, :price, :updated_at
 
   end
 end

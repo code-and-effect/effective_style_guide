@@ -17,8 +17,11 @@
 
   - if defined?(EffectiveFormInputs)
     = f.input :updated_at, :as => :effective_date_time_picker, :hint => 'please enter a datetime (this is an effective_date_time_picker field from EffectiveFormInputs)'
+    = f.input :publish_on, :as => :effective_date_picker, :hint => 'please enter a date (this is an effective_date_picker field from EffectiveFormInputs)'
+    = f.input :static_text, :as => :effective_static_control, :hint => 'you cant enter anything here (this is an effective_static_control field from EffectiveFormInputs)'
   - else
     = f.input :updated_at, :as => :datetime, :hint => 'please enter a date and time (this is a datetime field)'
+    = f.input :publish_on, :as => :date, :hint => 'please enter a date (this is a date field)'
 
   - if defined?(EffectiveOrders)
     = f.input :price, :as => :price, :hint => 'please enter a price (this is a price field from EffectiveOrders)'
@@ -48,8 +51,11 @@
 
   - if defined?(EffectiveFormInputs)
     = f.input :updated_at, :as => :effective_date_time_picker, :hint => 'please enter a datetime (this is an effective_date_time_picker field from EffectiveFormInputs)'
+    = f.input :publish_on, :as => :effective_date_picker, :hint => 'please enter a date (this is an effective_date_picker field from EffectiveFormInputs)'
+    = f.input :static_text, :as => :effective_static_control, :hint => 'you cant enter anything here (this is an effective_static_control field from EffectiveFormInputs)'
   - else
     = f.input :updated_at, :as => :datetime, :hint => 'please enter a date and time (this is a datetime field)'
+    = f.input :publish_on, :as => :date, :hint => 'please enter a date (this is a date field)'
 
   - if defined?(EffectiveOrders)
     = f.input :price, :as => :price, :hint => 'please enter a price (this is a price field from EffectiveOrders)'

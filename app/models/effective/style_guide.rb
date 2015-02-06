@@ -24,8 +24,14 @@ module Effective
     column :food, :string
     column :price, :integer
     column :updated_at, :datetime
+    column :publish_on, :date
+    column :static_text, :string
 
-    validates_presence_of :id, :title, :email, :password, :number, :range, :category, :content, :archived, :drink, :food, :price, :updated_at
+    validates_presence_of :id, :title, :email, :password, :number, :range, :category, :content, :archived, :drink, :food, :price, :updated_at, :publish_on, :static_text
+
+    def static_text
+      'some static text'
+    end
 
   end
 end

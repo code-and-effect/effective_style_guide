@@ -4,7 +4,12 @@
   = f.input :password, :hint => 'please enter a password (this is a password field)'
   = f.input :number, :hint => 'please enter a number (this is a number field)'
   = f.input :range, :as => :range, :hint => 'please enter a number range (this is a range field)'
-  = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is a select field)'
+
+  - if defined?(EffectiveFormInputs)
+    = f.input :category, :as => :effective_select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is an effective_select from EffectiveFormInputs)', :placeholder => 'Please choosezz'
+  - else
+    = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is a select field)'
+
   = f.input :drink, :as => :check_boxes, :wrapper => :horizontal_inline_radio_and_checkboxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :horizontal_inline_radio_and_checkboxes field)'
   = f.input :food, :as => :radio_buttons, :wrapper => :horizontal_inline_radio_and_checkboxes, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons :wrapper => :horizontal_inline_radio_and_checkboxes field)'
   = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'
@@ -38,7 +43,12 @@
   = f.input :password, :hint => 'please enter a password (this is a password field)'
   = f.input :number, :hint => 'please enter a number (this is a number field)'
   = f.input :range, :as => :range, :hint => 'please enter a number range (this is a range field)'
-  = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is a select field)'
+
+  - if defined?(EffectiveFormInputs)
+    = f.input :category, :as => :effective_select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is an effective_select from EffectiveFormInputs)'
+  - else
+    = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is a select field)'
+
   = f.input :drink, :as => :check_boxes, :wrapper => :horizontal_inline_radio_and_checkboxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :horizontal_inline_radio_and_checkboxes field)'
   = f.input :food, :as => :radio_buttons, :wrapper => :horizontal_inline_radio_and_checkboxes, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons :wrapper => :horizontal_inline_radio_and_checkboxes field)'
   = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'

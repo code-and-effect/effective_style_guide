@@ -7,7 +7,12 @@ module Effective
     end
 
     def self.column(name, sql_type = nil, default = nil, null = true)
-      columns << ::ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
+      if Rails.version >= '4.2.0'
+        cast_type = "ActiveRecord::Type::#{sql_type.to_s.titleize.sub('Datetime', 'DateTime')}".constantize.new()
+        columns << ::ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, cast_type, sql_type.to_s, null)
+      else
+        columns << ::ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
+      end
     end
 
     column :id, :integer

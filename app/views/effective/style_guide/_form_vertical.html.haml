@@ -4,13 +4,20 @@
   = f.input :password, :hint => 'please enter a password (this is a password field)'
   = f.input :number, :hint => 'please enter a number (this is a number field)'
   = f.input :range, :as => :range, :hint => 'please enter a number range (this is a range field)'
-  = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is a select field)'
-  = f.input :drink, :as => :check_boxes, :wrapper => :vertical_inline_radio_and_checkboxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :vertical_inline_radio_and_checkboxes field)'
-  = f.input :food, :as => :radio_buttons, :wrapper => :vertical_inline_radio_and_checkboxes, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons :wrapper => :vertical_inline_radio_and_checkboxes field)'
+
+  - if defined?(EffectiveFormInputs)
+    = f.input :category, :as => :effective_select, :collection => EffectiveStyleGuide.colors, :hint => 'please select a category (this is an effective_select from EffectiveFormInputs)', :placeholder => 'Please choose a category'
+    = f.input :category, :as => :effective_select, :collection => EffectiveStyleGuide.colors, :hint => 'please select multiple categories (this is an effective_select from EffectiveFormInputs)', :placeholder => 'Please choose multiple categories', :multiple => true
+    = f.input :category, :as => :effective_select, :collection => EffectiveStyleGuide.colors, :hint => 'please create or select multiple tags (this is an effective_select from EffectiveFormInputs)', :placeholder => 'Create or select multiple tags', :multiple => true, :tags => true
+  - else
+    = f.input :category, :as => :select, :collection => EffectiveStyleGuide.colors, :hint => 'please select a category (this is a select field)'
+
+  = f.input :drink, :as => :check_boxes, :wrapper => :vertical_inline_radio_and_checkboxes, :collection => EffectiveStyleGuide.foods, :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :vertical_inline_radio_and_checkboxes field)'
+  = f.input :food, :as => :radio_buttons, :wrapper => :vertical_inline_radio_and_checkboxes, :collection => EffectiveStyleGuide.foods, :hint => 'please select one food (this is a radio_buttons :wrapper => :vertical_inline_radio_and_checkboxes field)'
   = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'
   = f.input :archived, :hint => 'please select true or false (this is a boolean field)'
-  = f.input :drink, :as => :check_boxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes field)'
-  = f.input :food, :as => :radio_buttons, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons field)'
+  = f.input :drink, :as => :check_boxes, :collection => EffectiveStyleGuide.foods, :hint => 'please select one or more drinks (this is a check_boxes field)'
+  = f.input :food, :as => :radio_buttons, :collection => EffectiveStyleGuide.foods, :hint => 'please select one food (this is a radio_buttons field)'
 
   - if defined?(EffectiveAssets)
     = f.input :files, :as => :asset_box, :hint => 'please upload one or more files (this is an asset_box field from EffectiveAssets)'
@@ -37,13 +44,20 @@
   = f.input :password, :hint => 'please enter a password (this is a password field)'
   = f.input :number, :hint => 'please enter a number (this is a number field)'
   = f.input :range, :as => :range, :hint => 'please enter a number range (this is a range field)'
-  = f.input :category, :as => :select, :collection => 10.times.map { |x| "Category #{x}"}, :hint => 'please select a category (this is a select field)'
-  = f.input :drink, :as => :check_boxes, :wrapper => :vertical_inline_radio_and_checkboxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :vertical_inline_radio_and_checkboxes field)'
-  = f.input :food, :as => :radio_buttons, :wrapper => :vertical_inline_radio_and_checkboxes, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons :wrapper => :vertical_inline_radio_and_checkboxes field)'
+
+  - if defined?(EffectiveFormInputs)
+    = f.input :category, :as => :effective_select, :collection => EffectiveStyleGuide.colors, :hint => 'please select a category (this is an effective_select from EffectiveFormInputs)', :placeholder => 'Please choose a category'
+    = f.input :category, :as => :effective_select, :collection => EffectiveStyleGuide.colors, :hint => 'please select multiple categories (this is an effective_select from EffectiveFormInputs)', :placeholder => 'Please choose multiple categories', :multiple => true
+    = f.input :category, :as => :effective_select, :collection => EffectiveStyleGuide.colors, :hint => 'please create or select multiple tags (this is an effective_select from EffectiveFormInputs)', :placeholder => 'Create or select multiple tags', :multiple => true, :tags => true
+  - else
+    = f.input :category, :as => :select, :collection => EffectiveStyleGuide.colors, :hint => 'please select a category (this is a select field)'
+
+  = f.input :drink, :as => :check_boxes, :wrapper => :vertical_inline_radio_and_checkboxes, :collection => EffectiveStyleGuide.foods, :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :vertical_inline_radio_and_checkboxes field)'
+  = f.input :food, :as => :radio_buttons, :wrapper => :vertical_inline_radio_and_checkboxes, :collection => EffectiveStyleGuide.foods, :hint => 'please select one food (this is a radio_buttons :wrapper => :vertical_inline_radio_and_checkboxes field)'
   = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'
   = f.input :archived, :hint => 'please select true or false (this is a boolean field)'
-  = f.input :drink, :as => :check_boxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda'], :hint => 'please select one or more drinks (this is a check_boxes field)'
-  = f.input :food, :as => :radio_buttons, :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'], :hint => 'please select one food (this is a radio_buttons field)'
+  = f.input :drink, :as => :check_boxes, :collection => EffectiveStyleGuide.foods, :hint => 'please select one or more drinks (this is a check_boxes field)'
+  = f.input :food, :as => :radio_buttons, :collection => EffectiveStyleGuide.foods, :hint => 'please select one food (this is a radio_buttons field)'
 
   - if defined?(EffectiveAssets)
     = f.input :files, :as => :asset_box, :hint => 'please upload one or more files (this is an asset_box field from EffectiveAssets)'

@@ -17,4 +17,12 @@ module EffectiveStyleGuide
     true
   end
 
+  def self.colors
+    ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 'black', 'white', 'gray']
+  end
+
+  def self.foods
+    ['Water', 'Tea', 'Coffee', 'Soda']
+  end
+
 end

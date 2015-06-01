@@ -22,7 +22,7 @@ module EffectiveStyleGuide
   end
 
   def self.foods
-    ['Water', 'Tea', 'Coffee', 'Soda']
+    ['Coffee', 'Tea', 'Soda']
   end
 
 end

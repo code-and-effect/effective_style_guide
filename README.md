@@ -37,7 +37,7 @@ You must include the Twitter Bootstrap3 Javascript and CSS assets on your own.  
 
 ## Usage
 
-Visit /styleguide to test how the bootstrap3 components look with your site's design (css theme).
+Visit `/styleguide` to test how the bootstrap3 components look with your site's design (css theme).
 
 
 ### Add Custom Components

@@ -2,12 +2,14 @@ if defined?(EffectiveDatatables)
   module Effective
     module Datatables
       class StyleGuide < Effective::Datatable
-        array_column :id, :width => '10%'
-        array_column :material, :filter => {:type => :select, :values => ['Stainless Steel', 'Copper', 'Cast Iron', 'Composite']}
-        array_column :bowl, :filter => {:type => :select, :values => ['Single Bowl', 'Double Bowl', 'Triple Bowl']}
-        array_column :name
-        array_column :actions, :filter => false, :sortable => false do
-          [link_to('View', '#'), link_to('Edit', '#')].join('&nbsp;-&nbsp;').html_safe
+        datatable do
+          array_column :id, :width => '10%'
+          array_column :material, :filter => {:type => :select, :values => ['Stainless Steel', 'Copper', 'Cast Iron', 'Composite']}
+          array_column :bowl, :filter => {:type => :select, :values => ['Single Bowl', 'Double Bowl', 'Triple Bowl']}
+          array_column :name
+          array_column :actions, :filter => false, :sortable => false do
+            [link_to('View', '#'), link_to('Edit', '#')].join('&nbsp;-&nbsp;').html_safe
+          end
         end
 
         def collection

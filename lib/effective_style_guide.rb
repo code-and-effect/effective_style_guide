@@ -1,5 +1,5 @@
-require "effective_style_guide/engine"
-require "effective_style_guide/version"
+require 'haml-rails'
+require 'effective_style_guide/engine'
 
 module EffectiveStyleGuide
   # The following are all valid config keys

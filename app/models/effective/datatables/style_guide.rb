@@ -12,6 +12,7 @@ if defined?(EffectiveDatatables)
           end
         end
 
+        require 'effective_datatables/version'
         if Gem::Version.new(EffectiveDatatables::VERSION) >= Gem::Version.new('2.0')
           datatable do
             instance_eval &any_version

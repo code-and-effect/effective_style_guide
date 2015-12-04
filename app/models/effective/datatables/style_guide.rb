@@ -2,7 +2,7 @@ if defined?(EffectiveDatatables)
   module Effective
     module Datatables
       class StyleGuide < Effective::Datatable
-        datatable do
+        any_version = Proc.new do
           array_column :id, :width => '10%'
           array_column :material, :filter => {:type => :select, :values => ['Stainless Steel', 'Copper', 'Cast Iron', 'Composite']}
           array_column :bowl, :filter => {:type => :select, :values => ['Single Bowl', 'Double Bowl', 'Triple Bowl']}
@@ -10,6 +10,14 @@ if defined?(EffectiveDatatables)
           array_column :actions, :filter => false, :sortable => false do
             [link_to('View', '#'), link_to('Edit', '#')].join('&nbsp;-&nbsp;').html_safe
           end
+        end
+
+        if Gem::Version.new(EffectiveDatatables::VERSION) >= Gem::Version.new('2.0')
+          datatable do
+            instance_eval &any_version
+          end
+        else
+          instance_eval &any_version
         end
 
         def collection

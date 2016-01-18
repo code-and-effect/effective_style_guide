@@ -18,3 +18,23 @@
   %small Small
   = '-'
   %a{:href => '#'} Link
+
+%ul
+  %li List item
+  %li
+    List item
+    %ol
+      %li Nested numbered item
+      %li Nested numbered item
+      %li Nested numbered item
+  %li List item
+
+%ol
+  %li Numbered item
+  %li
+    Numbered item
+    %ul
+      %li Nested list item
+      %li Nested list item
+      %li Nested list item
+  %li Numbered item

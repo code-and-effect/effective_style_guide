@@ -1,4 +1,4 @@
-= simple_form_for Effective::StyleGuide.new(), :html => {:class => 'form-horizontal'}, :wrapper => :horizontal_form, :wrapper_mappings => SimpleForm.wrapper_mappings[:horizontal_form], :url => '/' do |f|
+= simple_form_for Effective::StyleGuide.new(), :html => {:class => 'form-horizontal'}, :wrapper => :horizontal_form, :wrapper_mappings => (SimpleForm.wrapper_mappings[:horizontal_form] || SimpleForm.wrapper_mappings), :url => '/' do |f|
   = f.input :title, :hint => 'please enter a title (this is a standard text field)'
   = f.input :email, :hint => 'please enter an email address (this is an email field)'
   = f.input :password, :hint => 'please enter a password (this is a password field)'
@@ -37,14 +37,12 @@
   = f.input :drink,
     :as => :check_boxes,
     :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :horizontal_radio_and_checkboxes field)',
-    :wrapper => :horizontal_radio_and_checkboxes
+    :hint => 'please select one or more drinks (this is a check_boxes field)'
 
   = f.input :food,
     :as => :radio_buttons,
     :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one food (this is a radio_buttons :wrapper => :horizontal_radio_and_checkboxes field)',
-    :wrapper => :horizontal_radio_and_checkboxes
+    :hint => 'please select one food (this is a radio_buttons field)'
 
   - if defined?(EffectiveAssets)
     = f.input :files,
@@ -85,7 +83,7 @@
 %hr
 .inline-example Form Horizontal Invalid State
 
-= simple_form_for Effective::StyleGuide.new().tap { |s| s.valid? }, :html => {:class => 'form-horizontal'}, :wrapper => :horizontal_form, :wrapper_mappings => SimpleForm.wrapper_mappings[:horizontal_form], :url => '/' do |f|
+= simple_form_for Effective::StyleGuide.new().tap { |s| s.valid? }, :html => {:class => 'form-horizontal'}, :wrapper => :horizontal_form, :wrapper_mappings => (SimpleForm.wrapper_mappings[:horizontal_form] || SimpleForm.wrapper_mappings), :url => '/' do |f|
   = f.input :title, :hint => 'please enter a title (this is a standard text field)'
   = f.input :email, :hint => 'please enter an email address (this is an email field)'
   = f.input :password, :hint => 'please enter a password (this is a password field)'
@@ -119,19 +117,17 @@
       :hint => 'please select a category (this is a select field)'
 
   = f.input :content, :as => :text, :hint => 'please enter a whole bunch of content (this is a textarea)'
-  = f.input :archived, :as => :boolean, :wrapper => :horizontal_boolean, :hint => 'this is a boolean field :wrapper => :horizontal_boolean'
+  = f.input :archived, :as => :boolean, :hint => 'please select true or false (this is a boolean field)'
 
   = f.input :drink,
     :as => :check_boxes,
     :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :horizontal_radio_and_checkboxes field)',
-    :wrapper => :horizontal_radio_and_checkboxes
+    :hint => 'please select one or more drinks (this is a check_boxes field)'
 
   = f.input :food,
     :as => :radio_buttons,
     :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one food (this is a radio_buttons :wrapper => :horizontal_radio_and_checkboxes field)',
-    :wrapper => :horizontal_radio_and_checkboxes
+    :hint => 'please select one food (this is a radio_buttons field)'
 
   - if defined?(EffectiveAssets)
     = f.input :files,
@@ -157,11 +153,11 @@
   - if defined?(EffectiveFormInputs)
     = f.input :phone,
       :as => :effective_tel,
-      :hint => 'please enter a phone number (this is an effective_tel field from EffectiveFormInputs'
+      :hint => 'please enter a phone number (this is an effective_tel field from EffectiveFormInputs)'
 
     = f.input :price,
       :as => :effective_price,
-      :hint => 'please enter a price (this is an effective_price field from EffectiveFormInputs'
+      :hint => 'please enter a price (this is an effective_price field from EffectiveFormInputs)'
 
   .form-group
     .col-sm-offset-3.col-sm-9

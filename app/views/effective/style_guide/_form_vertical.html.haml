@@ -38,12 +38,12 @@
   = f.input :drink,
     :as => :check_boxes,
     :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one or more drinks (this is a check_boxes input)'
+    :hint => 'please select one or more drinks (this is a check_boxes field)'
 
   = f.input :food,
     :as => :radio_buttons,
     :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one food (this is a radio_buttons input)'
+    :hint => 'please select one food (this is a radio_buttons field)'
 
   - if defined?(EffectiveAssets)
     = f.input :files,
@@ -69,11 +69,11 @@
   - if defined?(EffectiveFormInputs)
     = f.input :phone,
       :as => :effective_tel,
-      :hint => 'please enter a phone number (this is an effective_tel field from EffectiveFormInputs'
+      :hint => 'please enter a phone number (this is an effective_tel field from EffectiveFormInputs)'
 
     = f.input :price,
       :as => :effective_price,
-      :hint => 'please enter a price (this is an effective_price field from EffectiveFormInputs'
+      :hint => 'please enter a price (this is an effective_price field from EffectiveFormInputs)'
 
   = f.button :submit, 'Save', class: 'btn btn-primary'
   = f.button :submit, 'Save and Add New'
@@ -151,11 +151,11 @@
   - if defined?(EffectiveFormInputs)
     = f.input :phone,
       :as => :effective_tel,
-      :hint => 'please enter a phone number (this is an effective_tel field from EffectiveFormInputs'
+      :hint => 'please enter a phone number (this is an effective_tel field from EffectiveFormInputs)'
 
     = f.input :price,
       :as => :effective_price,
-      :hint => 'please enter a price (this is an effective_price field from EffectiveFormInputs'
+      :hint => 'please enter a price (this is an effective_price field from EffectiveFormInputs)'
 
   = f.button :submit, 'Save', class: 'btn btn-primary'
   = f.button :submit, 'Save and Add New'

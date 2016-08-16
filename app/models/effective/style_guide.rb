@@ -1,38 +1,34 @@
 module Effective
-  class StyleGuide < ActiveRecord::Base
-    acts_as_asset_box :files => 1..6 if defined?(EffectiveAssets)
+  class StyleGuide
+    include ActiveModel::Model
 
-    def self.columns
-      @columns ||= []
+    if defined?(EffectiveAssets)
+      acts_as_asset_box files: 1..6
     end
 
-    def self.column(name, sql_type = nil, default = nil, null = true)
-      if Rails.version >= '4.2.0'
-        cast_type = "ActiveRecord::Type::#{sql_type.to_s.titleize.sub('Datetime', 'DateTime')}".constantize.new()
-        columns << ::ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, cast_type, sql_type.to_s, null)
-      else
-        columns << ::ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
-      end
-    end
+    attr_accessor :id, :title, :email, :password, :number, :range, :category, :content
+    attr_accessor :archived, :drink, :food, :price, :updated_at, :publish_on, :static_text
 
-    column :id, :integer
 
-    column :title, :string
-    column :email, :string
-    column :password, :string
-    column :number, :integer
-    column :range, :integer
-    column :category, :string
-    column :content, :text
-    column :archived, :boolean
-    column :drink, :string
-    column :food, :string
-    column :price, :integer
-    column :updated_at, :datetime
-    column :publish_on, :date
-    column :static_text, :string
+    # column :id, :integer
 
-    validates_presence_of :id, :title, :email, :password, :number, :range, :category, :content, :archived, :drink, :food, :price, :updated_at, :publish_on, :static_text
+    # column :title, :string
+    # column :email, :string
+    # column :password, :string
+    # column :number, :integer
+    # column :range, :integer
+    # column :category, :string
+    # column :content, :text
+    # column :archived, :boolean
+    # column :drink, :string
+    # column :food, :string
+    # column :price, :integer
+    # column :updated_at, :datetime
+    # column :publish_on, :date
+    # column :static_text, :string
+
+    validates :id, :title, :email, :password, :number, :range, :category, :content, presence: true
+    validates :archived, :drink, :food, :price, :updated_at, :publish_on, :static_text, presence: true
 
     def static_text
       'some static text'

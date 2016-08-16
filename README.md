@@ -2,11 +2,11 @@
 
 Ensure that your custom CSS theme looks good with all Twitter Bootstrap3 html components.
 
-Creates a /styleguide page that renders the correct HTML for all bootstrap3 (v3.2.0) components.
+Creates a `/styleguide` page that renders the correct HTML for all bootstrap3 (v3.2.0) components.
 
 Use this page to ensure that your custom CSS theme looks good with the bootstrap3 components.
 
-Create a _my_component.html.erb partial in the /effective/style_guide/ directory to add your own custom components.
+Create a `_my_component.html.erb` partial in the `views/effective/style_guide/` directory to add your own custom components.
 
 Works with simple_form to ensure that the generated form HTML matches the bootstrap3 HTML.
 
@@ -42,9 +42,9 @@ Visit `/styleguide` to test how the bootstrap3 components look with your site's 
 
 ### Add Custom Components
 
-Create a _my_component.html.erb partial in the app/views/effective/style_guide/ directory.
+Create a `_my_component.html.erb` partial in the `views/effective/style_guide/` directory.
 
-This file will be automatically detected and included in the /styleguide page.
+This file will be automatically detected and included in the `/styleguide` page.
 
 
 ### simple_form

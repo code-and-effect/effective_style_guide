@@ -2,9 +2,15 @@
   = f.input :title, :placeholder => 'Enter title'
   = f.input :email, :placeholder => 'Enter email'
   - if defined?(EffectiveFormInputs)
-    = f.input :category, :as => :effective_select, :collection => EffectiveStyleGuide.colors, :placeholder => 'Select color'
+    = f.input :category,
+      :as => :effective_select,
+      :collection => EffectiveStyleGuide.colors,
+      :placeholder => 'Select color'
   - else
-    = f.input :category, :as => :select, :collection => EffectiveStyleGuide.colors, :placeholder => 'Select color'
+    = f.input :category,
+      :as => :select,
+      :collection => EffectiveStyleGuide.colors,
+      :placeholder => 'Select color'
   = f.input :archived
   = f.button :submit
 
@@ -15,9 +21,15 @@
   = f.input :title, :placeholder => 'Enter title'
   = f.input :email, :placeholder => 'Enter email'
   - if defined?(EffectiveFormInputs)
-    = f.input :category, :as => :effective_select, :collection => EffectiveStyleGuide.colors, :placeholder => 'Select color'
+    = f.input :category,
+      :as => :effective_select,
+      :collection => EffectiveStyleGuide.colors,
+      :placeholder => 'Select color'
   - else
-    = f.input :category, :as => :select, :collection => EffectiveStyleGuide.colors, :placeholder => 'Select color'
+    = f.input :category,
+      :as => :select,
+      :collection => EffectiveStyleGuide.colors,
+      :placeholder => 'Select color'
   = f.input :archived
   = f.button :submit
 

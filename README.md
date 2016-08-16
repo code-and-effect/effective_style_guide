@@ -51,188 +51,25 @@ This file will be automatically detected and included in the /styleguide page.
 
 simple_form (https://github.com/plataformatec/simple_form) is a pretty good FormBuilder gem.
 
-At this time of writing, the latest simple_form v3.2.1 includes a bootstrap3 config/initializer that gets very close to generating the correct bootstrap3 form HTML (as per bootstrap's example page).
+At this time of writing, the latest simple_form v3.2.1 includes a bootstrap3 config/initializer that generates correct bootstrap3 form HTML (as per bootstrap's example page).
 
-Very close, but not quite perfect.
+It does a great job with vertical and inline forms, but needs a little bit of help with the horizontal forms.
 
-It is also somewhat cumbersome to work with vertical, horizontal and inline forms from within the same app.
-
-Due to these limitations, we have created our own custom config/initializer that does generate the correct bootstrap3 form HTML.
-
-Here is the initializer:
+Add the following snippet to the bottom of the `config/initializers/simple_form_bootstrap.rb` file:
 
 ```ruby
-SimpleForm.setup do |config|
-  config.error_notification_class = 'alert alert-danger'
-  config.button_class = 'btn btn-primary'
-  config.boolean_label_class = nil
+### Custom as per Effective Style Guide ###
+config.browser_validations = true
 
-  config.boolean_style = :nested
-  config.browser_validations = true
-
-  config.form_class = ''
-  config.default_wrapper = :vertical_form
-
-  config.wrapper_mappings = {
-    :boolean => :vertical_boolean,
-    :check_boxes => :vertical_radio_and_checkboxes,
-    :radio_buttons => :vertical_radio_and_checkboxes,
-
-    :horizontal_form => {
-      :boolean => :horizontal_boolean,
-      :check_boxes => :horizontal_radio_and_checkboxes,
-      :radio_buttons => :horizontal_radio_and_checkboxes
-    }
-  }
-
-  config.wrappers :vertical_form, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
-    b.use :html5
-    b.use :placeholder
-    b.optional :maxlength
-    b.optional :pattern
-    b.optional :min_max
-    b.optional :readonly
-    b.use :label, class: 'control-label'
-
-    b.use :input, class: 'form-control'
-    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
-  end
-
-  config.wrappers :vertical_file_input, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
-    b.use :html5
-    b.use :placeholder
-    b.optional :maxlength
-    b.optional :readonly
-    b.use :label, class: 'control-label'
-
-    b.use :input
-    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
-  end
-
-  config.wrappers :vertical_boolean, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
-    b.use :html5
-    b.optional :readonly
-
-    b.wrapper tag: 'div', class: 'checkbox' do |ba|
-      ba.use :label_input
-    end
-
-    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
-  end
-
-  config.wrappers :vertical_radio_and_checkboxes, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
-    b.use :html5
-    b.optional :readonly
-    b.use :label_input, :class => 'control-label'
-    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
-  end
-
-  config.wrappers :vertical_inline_radio_and_checkboxes, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
-    b.use :html5
-    b.optional :readonly
-
-    b.use :label, class: 'control-label'
-
-    b.wrapper tag: 'div', class: 'inline-radio-or-checkboxes' do |ba|
-      ba.use :input
-    end
-
-    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
-  end
-
-  config.wrappers :horizontal_form, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
-    b.use :html5
-    b.use :placeholder
-    b.optional :maxlength
-    b.optional :pattern
-    b.optional :min_max
-    b.optional :readonly
-    b.use :label, class: 'col-sm-3 control-label'
-
-    b.wrapper tag: 'div', class: 'col-sm-9' do |ba|
-      ba.use :input, class: 'form-control'
-      ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
-    end
-  end
-
-  config.wrappers :horizontal_file_input, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
-    b.use :html5
-    b.use :placeholder
-    b.optional :maxlength
-    b.optional :readonly
-    b.use :label, class: 'col-sm-3 control-label'
-
-    b.wrapper tag: 'div', class: 'col-sm-9' do |ba|
-      ba.use :input
-      ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
-    end
-  end
-
-  config.wrappers :horizontal_boolean, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
-    b.use :html5
-    b.optional :readonly
-
-    b.wrapper tag: 'div', class: 'col-sm-offset-3 col-sm-9' do |wr|
-      wr.wrapper tag: 'div', class: 'checkbox' do |ba|
-        ba.use :label_input, class: 'col-sm-9'
-      end
-
-      wr.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-      wr.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
-    end
-  end
-
-  config.wrappers :horizontal_radio_and_checkboxes, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
-    b.use :html5
-    b.optional :readonly
-
-    b.use :label, class: 'col-sm-3 control-label'
-
-    b.wrapper tag: 'div', class: 'col-sm-9' do |ba|
-      ba.use :input
-      ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
-    end
-  end
-
-  config.wrappers :horizontal_inline_radio_and_checkboxes, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
-    b.use :html5
-    b.optional :readonly
-
-    b.use :label, class: 'col-sm-3 control-label'
-
-    b.wrapper tag: 'div', class: 'col-sm-9' do |ba|
-      ba.wrapper tag: 'div', :class => 'inline-radio-or-checkboxes' do |bb|
-        bb.use :input
-      end
-
-      ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
-    end
-  end
-
-  config.wrappers :inline_form, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
-    b.use :html5
-    b.use :placeholder
-    b.optional :maxlength
-    b.optional :pattern
-    b.optional :min_max
-    b.optional :readonly
-    b.use :label, class: 'sr-only'
-
-    b.use :input, class: 'form-control'
-    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
-  end
-
-end
+config.wrapper_mappings[:horizontal_form] = {
+  check_boxes: :horizontal_radio_and_checkboxes,
+  radio_buttons: :horizontal_radio_and_checkboxes,
+  file: :horizontal_file_input,
+  boolean: :horizontal_boolean,
+  datetime: :horizontal_radio_and_checkboxes,
+  date: :horizontal_radio_and_checkboxes,
+  time: :horizontal_radio_and_checkboxes
+}
 ```
 
 To create a bootstrap3 vertical_form:
@@ -246,7 +83,7 @@ To create a bootstrap3 vertical_form:
 To create a bootstrap3 horizontal_form:
 
 ```ruby
-= simple_form_for(@post, :html => {:class => 'form-horizontal'}, :wrapper => :horizontal_form, :wrapper_mappings => SimpleForm.wrapper_mappings[:horizontal_form]) do |f|
+= simple_form_for(@post, html: {class: 'form-horizontal'}, wrapper: :horizontal_form, wrapper_mappings: SimpleForm.wrapper_mappings[:horizontal_form]) do |f|
   # one or more inputs....
   .form-group
     .col-sm-offset-3.col-sm-9= f.button :submit
@@ -255,38 +92,10 @@ To create a bootstrap3 horizontal_form:
 To create a bootstrap3 inline_form:
 
 ```ruby
-= simple_form_for(@post, :html => {:class => 'form-inline'}, :wrapper => :inline_form) do |f|
+= simple_form_for(@post, html: {class: 'form-inline'}, wrapper: :inline_form) do |f|
   # one or more inputs....
   = f.button :submit
 ```
-
-In all 3 of the above examples, the proper wrappers will be used to generate the correct HTML for every type of form field.
-
-This includes the frustrating booleans, radio and checkbox groups.
-
-One gotcha, if you'd like to use the 'Inline checkboxes and radios' component, you will need to pass a wrapper to the f.input.
-
-For a vertical_form or inline_form:
-
-```ruby
-= f.input :favorite_drink, :as => :check_boxes, :wrapper => :vertical_inline_radio_and_checkboxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda']
-```
-
-For a horizontal_form:
-
-```ruby
-= f.input :favorite_drink, :as => :check_boxes, :wrapper => :horizontal_inline_radio_and_checkboxes, :collection => ['Water', 'Tea', 'Coffee', 'Soda']
-```
-
-And add the following CSS:
-
-```css
-form .inline-radio-or-checkboxes > span {
-  display: inline-block;
-  margin: 0px 10px 0px 0px;
-}
-```
-
 
 ## Authorization
 

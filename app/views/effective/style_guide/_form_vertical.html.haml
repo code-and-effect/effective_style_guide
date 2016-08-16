@@ -32,29 +32,18 @@
       :collection => EffectiveStyleGuide.colors,
       :hint => 'please select a category (this is a select field)'
 
+  = f.input :content, :as => :text, :hint => 'please enter a whole bunch of content (this is a textarea)'
+  = f.input :archived, :as => :boolean, :hint => 'please select true or false (this is a boolean field)'
+
   = f.input :drink,
     :as => :check_boxes,
     :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :vertical_inline_radio_and_checkboxes field)'
-  -#:wrapper => :vertical_inline_radio_and_checkboxes,
+    :hint => 'please select one or more drinks (this is a check_boxes input)'
 
   = f.input :food,
     :as => :radio_buttons,
     :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one food (this is a radio_buttons :wrapper => :vertical_inline_radio_and_checkboxes field)'
-  -#:wrapper => :vertical_inline_radio_and_checkboxes,
-
-  = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'
-  = f.input :archived, :hint => 'please select true or false (this is a boolean field)'
-  = f.input :drink,
-    :as => :check_boxes,
-    :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one or more drinks (this is a check_boxes field)'
-
-  = f.input :food,
-    :as => :radio_buttons,
-    :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one food (this is a radio_buttons field)'
+    :hint => 'please select one food (this is a radio_buttons input)'
 
   - if defined?(EffectiveAssets)
     = f.input :files,
@@ -72,7 +61,7 @@
 
     = f.input :static_text,
       :as => :effective_static_control,
-      :hint => 'you cant enter anything here (this is an effective_static_control field from EffectiveFormInputs)'
+      :hint => "you can't enter anything here (this is an effective_static_control field from EffectiveFormInputs)"
   - else
     = f.input :updated_at, :as => :datetime, :hint => 'please enter a date and time (this is a datetime field)'
     = f.input :publish_on, :as => :date, :hint => 'please enter a date (this is a date field)'
@@ -80,7 +69,9 @@
   - if defined?(EffectiveOrders)
     = f.input :price, :as => :price, :hint => 'please enter a price (this is a price field from EffectiveOrders)'
 
-  = f.button :submit
+  = f.button :submit, 'Save', class: 'btn btn-primary'
+  = f.button :submit, 'Save and Add New'
+  = link_to 'Cancel', '#'
 
 %hr
 .inline-example Form Vertical Invalid State
@@ -119,29 +110,18 @@
       :collection => EffectiveStyleGuide.colors,
       :hint => 'please select a category (this is a select field)'
 
+  = f.input :content, :as => :text, :hint => 'please enter a whole bunch of content (this is a textarea)'
+  = f.input :archived, :as => :boolean, :hint => 'please select true or false (this is a boolean field)'
+
   = f.input :drink,
     :as => :check_boxes,
     :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :vertical_inline_radio_and_checkboxes field)'
-  -# :wrapper => :vertical_inline_radio_and_checkboxes,
+    :hint => 'please select one or more drinks (this is a check_boxes input)'
 
   = f.input :food,
     :as => :radio_buttons,
     :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one food (this is a radio_buttons :wrapper => :vertical_inline_radio_and_checkboxes field)'
-  - #:wrapper => :vertical_inline_radio_and_checkboxes,
-
-  = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'
-  = f.input :archived, :hint => 'please select true or false (this is a boolean field)'
-  = f.input :drink,
-    :as => :check_boxes,
-    :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one or more drinks (this is a check_boxes field)'
-
-  = f.input :food,
-    :as => :radio_buttons,
-    :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one food (this is a radio_buttons field)'
+    :hint => 'please select one food (this is a radio_buttons input)'
 
   - if defined?(EffectiveAssets)
     = f.input :files, :as => :asset_box, :hint => 'please upload one or more files (this is an asset_box field from EffectiveAssets)'
@@ -165,4 +145,6 @@
   - if defined?(EffectiveOrders)
     = f.input :price, :as => :price, :hint => 'please enter a price (this is a price field from EffectiveOrders)'
 
-  = f.button :submit
+  = f.button :submit, 'Save', class: 'btn btn-primary'
+  = f.button :submit, 'Save and Add New'
+  = link_to 'Cancel', '#'

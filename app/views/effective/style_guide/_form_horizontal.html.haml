@@ -31,30 +31,20 @@
       :collection => EffectiveStyleGuide.colors,
       :hint => 'please select a category (this is a select field)'
 
-  = f.input :drink,
-    :as => :check_boxes,
-    :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :horizontal_inline_radio_and_checkboxes field)'
-  -# :wrapper => :horizontal_inline_radio_and_checkboxes,
-
-  = f.input :food,
-    :as => :radio_buttons,
-    :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one food (this is a radio_buttons :wrapper => :horizontal_inline_radio_and_checkboxes field)'
-  - #:wrapper => :horizontal_inline_radio_and_checkboxes,
-
   = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'
   = f.input :archived, :hint => 'please select true or false (this is a boolean field)'
 
   = f.input :drink,
     :as => :check_boxes,
     :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one or more drinks (this is a check_boxes field)'
+    :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :horizontal_radio_and_checkboxes field)',
+    :wrapper => :horizontal_radio_and_checkboxes
 
   = f.input :food,
     :as => :radio_buttons,
     :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one food (this is a radio_buttons field)'
+    :hint => 'please select one food (this is a radio_buttons :wrapper => :horizontal_radio_and_checkboxes field)',
+    :wrapper => :horizontal_radio_and_checkboxes
 
   - if defined?(EffectiveAssets)
     = f.input :files,
@@ -81,7 +71,10 @@
     = f.input :price, :as => :price, :hint => 'please enter a price (this is a price field from EffectiveOrders)'
 
   .form-group
-    .col-sm-offset-3.col-sm-9= f.button :submit
+    .col-sm-offset-3.col-sm-9
+      = f.button :submit, 'Save', class: 'btn btn-primary'
+      = f.button :submit, 'Save and Add New'
+      = link_to 'Cancel', '#'
 
 %hr
 .inline-example Form Horizontal Invalid State
@@ -119,32 +112,20 @@
       :collection => EffectiveStyleGuide.colors,
       :hint => 'please select a category (this is a select field)'
 
-  = f.input :drink,
-    :as => :check_boxes,
-    :collection => ['Water', 'Tea', 'Coffee', 'Soda'],
-    :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :horizontal_inline_radio_and_checkboxes field)'
-  -# :wrapper => :horizontal_inline_radio_and_checkboxes,
-
-  = f.input :food,
-    :as => :radio_buttons,
-    :collection => ['Pasta', 'Rice', 'Potato', 'Couscous'],
-    :hint => 'please select one food (this is a radio_buttons :wrapper => :horizontal_inline_radio_and_checkboxes field)'
-  -# :wrapper => :horizontal_inline_radio_and_checkboxes,
-
   = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'
   = f.input :archived, :wrapper => :horizontal_boolean, :hint => 'please select true or false (this is a boolean field)'
 
   = f.input :drink,
-    :wrapper => :horizontal_radio_and_checkboxes,
     :as => :check_boxes,
     :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one or more drinks (this is a check_boxes field)'
+    :hint => 'please select one or more drinks (this is a check_boxes :wrapper => :horizontal_radio_and_checkboxes field)',
+    :wrapper => :horizontal_radio_and_checkboxes
 
   = f.input :food,
-    :wrapper => :horizontal_radio_and_checkboxes,
     :as => :radio_buttons,
     :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one food (this is a radio_buttons field)'
+    :hint => 'please select one food (this is a radio_buttons :wrapper => :horizontal_radio_and_checkboxes field)',
+    :wrapper => :horizontal_radio_and_checkboxes
 
   - if defined?(EffectiveAssets)
     = f.input :files,
@@ -171,4 +152,7 @@
     = f.input :price, :as => :price, :hint => 'please enter a price (this is a price field from EffectiveOrders)'
 
   .form-group
-    .col-sm-offset-3.col-sm-9= f.button :submit
+    .col-sm-offset-3.col-sm-9
+      = f.button :submit, 'Save', class: 'btn btn-primary'
+      = f.button :submit, 'Save and Add New'
+      = link_to 'Cancel', '#'

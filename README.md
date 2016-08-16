@@ -337,6 +337,18 @@ rescue_from Effective::AccessDenied do |exception|
 end
 ```
 
+
+### Permissions
+
+The permissions you actually want to define are as follows (using CanCan):
+
+```ruby
+if user.is?(:admin)
+  can :show, Effective::StyleGuide
+end
+```
+
+
 ## License
 
 MIT License.  Copyright [Code and Effect Inc.](http://www.codeandeffect.com/)

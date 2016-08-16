@@ -51,7 +51,7 @@ This file will be automatically detected and included in the /styleguide page.
 
 simple_form (https://github.com/plataformatec/simple_form) is a pretty good FormBuilder gem.
 
-At this time of writing, the latest simple_form v3.1.0.rc2 includes a bootstrap3 config/initializer that gets very close to generating the correct bootstrap3 form HTML (as per bootstrap's example page).
+At this time of writing, the latest simple_form v3.2.1 includes a bootstrap3 config/initializer that gets very close to generating the correct bootstrap3 form HTML (as per bootstrap's example page).
 
 Very close, but not quite perfect.
 

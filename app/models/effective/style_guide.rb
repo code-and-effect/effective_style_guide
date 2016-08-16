@@ -7,7 +7,7 @@ module Effective
     end
 
     ATTRIBUTES = [
-      :id, :title, :email, :password, :number, :range, :category, :content,
+      :id, :title, :email, :password, :number, :range, :category, :content, :phone,
       :archived, :drink, :food, :price, :updated_at, :publish_on, :static_text
     ]
 

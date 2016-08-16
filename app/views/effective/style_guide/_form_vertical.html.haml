@@ -66,8 +66,14 @@
     = f.input :updated_at, :as => :datetime, :hint => 'please enter a date and time (this is a datetime field)'
     = f.input :publish_on, :as => :date, :hint => 'please enter a date (this is a date field)'
 
-  - if defined?(EffectiveOrders)
-    = f.input :price, :as => :price, :hint => 'please enter a price (this is a price field from EffectiveOrders)'
+  - if defined?(EffectiveFormInputs)
+    = f.input :phone,
+      :as => :effective_tel,
+      :hint => 'please enter a phone number (this is an effective_tel field from EffectiveFormInputs'
+
+    = f.input :price,
+      :as => :effective_price,
+      :hint => 'please enter a price (this is an effective_price field from EffectiveFormInputs'
 
   = f.button :submit, 'Save', class: 'btn btn-primary'
   = f.button :submit, 'Save and Add New'
@@ -142,8 +148,14 @@
     = f.input :updated_at, :as => :datetime, :hint => 'please enter a date and time (this is a datetime field)'
     = f.input :publish_on, :as => :date, :hint => 'please enter a date (this is a date field)'
 
-  - if defined?(EffectiveOrders)
-    = f.input :price, :as => :price, :hint => 'please enter a price (this is a price field from EffectiveOrders)'
+  - if defined?(EffectiveFormInputs)
+    = f.input :phone,
+      :as => :effective_tel,
+      :hint => 'please enter a phone number (this is an effective_tel field from EffectiveFormInputs'
+
+    = f.input :price,
+      :as => :effective_price,
+      :hint => 'please enter a price (this is an effective_price field from EffectiveFormInputs'
 
   = f.button :submit, 'Save', class: 'btn btn-primary'
   = f.button :submit, 'Save and Add New'

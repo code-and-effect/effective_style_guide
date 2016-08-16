@@ -31,8 +31,8 @@
       :collection => EffectiveStyleGuide.colors,
       :hint => 'please select a category (this is a select field)'
 
-  = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'
-  = f.input :archived, :hint => 'please select true or false (this is a boolean field)'
+  = f.input :content, :as => :text, :hint => 'please enter a whole bunch of content (this is a textarea)'
+  = f.input :archived, :as => :boolean, :hint => 'please select true or false (this is a boolean field)'
 
   = f.input :drink,
     :as => :check_boxes,
@@ -67,8 +67,14 @@
     = f.input :updated_at, :as => :datetime, :hint => 'please enter a date and time (this is a datetime field)'
     = f.input :publish_on, :as => :date, :hint => 'please enter a date (this is a date field)'
 
-  - if defined?(EffectiveOrders)
-    = f.input :price, :as => :price, :hint => 'please enter a price (this is a price field from EffectiveOrders)'
+  - if defined?(EffectiveFormInputs)
+    = f.input :phone,
+      :as => :effective_tel,
+      :hint => 'please enter a phone number (this is an effective_tel field from EffectiveFormInputs'
+
+    = f.input :price,
+      :as => :effective_price,
+      :hint => 'please enter a price (this is an effective_price field from EffectiveFormInputs'
 
   .form-group
     .col-sm-offset-3.col-sm-9
@@ -112,8 +118,8 @@
       :collection => EffectiveStyleGuide.colors,
       :hint => 'please select a category (this is a select field)'
 
-  = f.input :content, :hint => 'please enter a whole bunch of content (this is a textarea)'
-  = f.input :archived, :wrapper => :horizontal_boolean, :hint => 'please select true or false (this is a boolean field)'
+  = f.input :content, :as => :text, :hint => 'please enter a whole bunch of content (this is a textarea)'
+  = f.input :archived, :as => :boolean, :wrapper => :horizontal_boolean, :hint => 'this is a boolean field :wrapper => :horizontal_boolean'
 
   = f.input :drink,
     :as => :check_boxes,
@@ -148,8 +154,14 @@
     = f.input :updated_at, :as => :datetime, :hint => 'please enter a date and time (this is a datetime field)'
     = f.input :publish_on, :as => :date, :hint => 'please enter a date (this is a date field)'
 
-  - if defined?(EffectiveOrders)
-    = f.input :price, :as => :price, :hint => 'please enter a price (this is a price field from EffectiveOrders)'
+  - if defined?(EffectiveFormInputs)
+    = f.input :phone,
+      :as => :effective_tel,
+      :hint => 'please enter a phone number (this is an effective_tel field from EffectiveFormInputs'
+
+    = f.input :price,
+      :as => :effective_price,
+      :hint => 'please enter a price (this is an effective_price field from EffectiveFormInputs'
 
   .form-group
     .col-sm-offset-3.col-sm-9

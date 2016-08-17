@@ -32,6 +32,7 @@
 
   $(document).ready(function() { initStyleGuide(); });
   $(document).on('page:change', function() { initStyleGuide(); });
+  $(document).on('turbolinks:load', function() { initStyleGuide(); });
 
 :css
   .effective-style-guide nav {

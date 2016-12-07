@@ -18,7 +18,7 @@ EffectiveStyleGuide.setup do |config|
   #
   # Or disable the check completely:
   # config.authorization_method = false
-  config.authorization_method = Proc.new { |controller, action, resource| true }  # All users can see every screen
+  config.authorization_method = Proc.new { |controller, action, resource| authorize!(action, resource) }  # CanCanCan
 
   # Admin Screens Layout Settings
   config.layout = 'application'   # All EffectiveStyleGuide controllers will use this layout

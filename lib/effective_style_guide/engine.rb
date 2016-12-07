@@ -4,7 +4,7 @@ module EffectiveStyleGuide
 
     # Set up our default configuration options.
     initializer "effective_style_guide.defaults", :before => :load_config_initializers do |app|
-      eval File.read("#{config.root}/lib/generators/templates/effective_style_guide.rb")
+      eval File.read("#{config.root}/config/effective_style_guide.rb")
     end
 
   end

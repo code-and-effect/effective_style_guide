@@ -1,4 +1,4 @@
-if defined?(EffectiveDatatables)
+if defined?(EffectiveDatatables) && Gem::Version.new(EffectiveDatatables::VERSION) < Gem::Version.new('3.0')
   module Effective
     module Datatables
       class StyleGuide < Effective::Datatable

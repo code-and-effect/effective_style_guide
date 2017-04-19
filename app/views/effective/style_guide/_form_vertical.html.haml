@@ -40,10 +40,27 @@
     :collection => EffectiveStyleGuide.foods,
     :hint => 'please select one or more drinks (this is a check_boxes field)'
 
-  = f.input :food,
-    :as => :radio_buttons,
-    :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one food (this is a radio_buttons field)'
+  - if defined?(EffectiveFormInputs)
+    = f.input :food,
+      :as => :effective_radio_buttons,
+      :collection => EffectiveStyleGuide.foods,
+      :hint => 'please select one food (this is an effective_radio_buttons from EffectiveFormInputs)'
+
+    = f.input :food,
+      :as => :effective_radio_buttons,
+      :collection => EffectiveStyleGuide.foods,
+      :hint => 'please select one food (this is an inline: true effective_radio_buttons from EffectiveFormInputs)',
+      :inline => true
+
+    = f.input :food,
+      :as => :effective_radio_buttons,
+      :collection => EffectiveStyleGuide.foods,
+      :buttons => true
+  - else
+    = f.input :food,
+      :as => :radio_buttons,
+      :collection => EffectiveStyleGuide.foods,
+      :hint => 'please select one food (this is a radio_buttons field)'
 
   - if defined?(EffectiveAssets)
     = f.input :files,
@@ -124,10 +141,27 @@
     :collection => EffectiveStyleGuide.foods,
     :hint => 'please select one or more drinks (this is a check_boxes input)'
 
-  = f.input :food,
-    :as => :radio_buttons,
-    :collection => EffectiveStyleGuide.foods,
-    :hint => 'please select one food (this is a radio_buttons input)'
+  - if defined?(EffectiveFormInputs)
+    = f.input :food,
+      :as => :effective_radio_buttons,
+      :collection => EffectiveStyleGuide.foods,
+      :hint => 'please select one food (this is an effective_radio_buttons from EffectiveFormInputs)'
+
+    = f.input :food,
+      :as => :effective_radio_buttons,
+      :collection => EffectiveStyleGuide.foods,
+      :hint => 'please select one food (this is an inline: true effective_radio_buttons from EffectiveFormInputs)',
+      :inline => true
+
+    = f.input :food,
+      :as => :effective_radio_buttons,
+      :collection => EffectiveStyleGuide.foods,
+      :buttons => true
+  - else
+    = f.input :food,
+      :as => :radio_buttons,
+      :collection => EffectiveStyleGuide.foods,
+      :hint => 'please select one food (this is a radio_buttons field)'
 
   - if defined?(EffectiveAssets)
     = f.input :files, :as => :asset_box, :hint => 'please upload one or more files (this is an asset_box field from EffectiveAssets)'

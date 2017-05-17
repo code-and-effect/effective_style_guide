@@ -134,6 +134,12 @@
       :placeholder => 'Create or select multiple tags',
       :multiple => true,
       :tags => true
+
+    = f.input :category,
+      :as => :effective_panel_select,
+      :input_js => { invade: false },
+      :collection => EffectiveStyleGuide.grouped_colors,
+      :hint => 'please select a category (this is an effective_panel_select from EffectiveFormInputs)'
   - else
     = f.input :category,
       :as => :select,

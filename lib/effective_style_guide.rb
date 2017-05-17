@@ -27,4 +27,12 @@ module EffectiveStyleGuide
     ['Coffee', 'Tea', 'Soda']
   end
 
+  def self.grouped_colors
+    {
+      'Top' => [['Red', 1], ['Orange', 2], ['Yellow', 3]],
+      'Middle' => [['Green', 4], ['Blue', 5], ['Indigo', 6]],
+      'Bottom' => [['Violet', 7]]
+    }
+  end
+
 end

@@ -1,12 +1,13 @@
 .row
   .col-3
-    %nav.nav.nav-pills.flex-column
+    %nav.nav.nav-pills.flex-column{style: 'position: fixed;'}
       - @partials.each_with_index do |partial, index|
         %a.nav-item.nav-link{href: '#' + partial.parameterize}= partial.titleize
 
   .col-9
     - @partials.each do |partial|
-      .card.mb-3.mt-3{id: partial.parameterize}
+      %a{name: partial.parameterize}
+      .card.mb-3.mt-3
         .card-header
           = partial.titleize
         .card-body

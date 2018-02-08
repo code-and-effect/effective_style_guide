@@ -1,0 +1,89 @@
+.row.effective-style-guide
+  .col-sm-3
+    %nav
+      %ul.nav.nav-pills.nav-stacked
+        - @partials.each_with_index do |partial, index|
+          %li{:class => ('active' if index == 0)}
+            %a{:href => "##{partial.parameterize}"}= partial.titleize
+
+  .col-sm-9
+    - @partials.each do |partial|
+      %div.example{:id => "#{partial.parameterize}"}
+        %span.example= partial.titleize
+        = render :partial => partial
+
+    - 10.times do
+      %br
+
+:javascript
+  var initStyleGuide = function() {
+    $('.effective-style-guide > div > nav').affix({
+      offset: { top: $('.effective-style-guide > div > nav').offset().top - 20 }
+    });
+
+    $('body').scrollspy({ target: '.effective-style-guide > div > nav', offset: 100 });
+
+    $('.effective-style-guide > div > nav > ul a').on('click', function(event) {
+      event.preventDefault();
+      target = $(event.currentTarget).attr('href')
+      if(target.length > 0) { $('html, body').scrollTop($(target).offset().top); }
+    });
+  };
+
+  $(document).ready(function() { initStyleGuide(); });
+  $(document).on('page:change', function() { initStyleGuide(); });
+  $(document).on('turbolinks:load', function() { initStyleGuide(); });
+
+:css
+  .effective-style-guide nav {
+    display: inline-block;
+  }
+
+  .effective-style-guide .nav > li > a {
+    padding: 5px 10px;
+  }
+
+  .effective-style-guide .affix {
+    position: fixed;
+    top: 20px;
+  }
+
+  .effective-style-guide div.example {
+    background-color: #fff;
+    border-color: #ddd;
+    border-radius: 4px 4px 0 0;
+    border-width: 1px;
+    box-shadow: none;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 30px;
+    border-style: solid;
+    padding: 45px 15px 15px;
+    position: relative;
+  }
+
+  .effective-style-guide span.example {
+    color: #959595;
+    font-size: 12px;
+    font-weight: 700;
+    left: 15px;
+    letter-spacing: 1px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 15px;
+  }
+
+  .effective-style-guide .inline-example {
+    color: #959595;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  / .effective-style-guide .inline-radio-or-checkboxes > span {
+  /   display: inline-block;
+  /   margin: 0px 10px 0px 0px;
+  / }
+

@@ -1,14 +1,23 @@
-.row
+.row{style: 'position: relative;'}
   .col-3
-    %nav.nav.nav-pills.flex-column{style: 'position: fixed;'}
+    .list-group{style: 'position: fixed;', id: 'effective-style-guide-sidebar'}
       - @partials.each_with_index do |partial, index|
-        %a.nav-item.nav-link{href: '#' + partial.parameterize}= partial.titleize
+        %a.list-group-item.list-group-item-action.py-1{href: '#' + partial.parameterize}= partial.titleize
 
   .col-9
     - @partials.each do |partial|
       %a{name: partial.parameterize}
-      .card.mb-3.mt-3
+      .card.my-3{id: partial.parameterize}
         .card-header
           = partial.titleize
         .card-body
           = render partial: partial
+
+:javascript
+  var initStyleGuide = function() {
+    $('body').scrollspy({ target: '#effective-style-guide-sidebar', offset: 100 });
+    $('#effective-style-guide-sidebar').on('click', 'a', function(event) { event.stopPropagation(); });
+  };
+
+  $(document).ready(function() { initStyleGuide(); });
+  $(document).on('turbolinks:load', function() { initStyleGuide(); });

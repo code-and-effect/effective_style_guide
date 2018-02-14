@@ -1,12 +1,14 @@
 # Effective Style Guide
 
-Ensure that your custom CSS theme looks good with all Twitter Bootstrap3 html components.
+Ensure that your custom CSS theme looks good with all Twitter Bootstrap html components.
 
-Creates a `/styleguide` page that renders the correct HTML for all bootstrap3 (v3.2.0) components.
+Creates a `/styleguide` page that renders the correct HTML for all bootstrap4 (v4.0.0) components.
 
-Use this page to ensure that your custom CSS theme looks good with the bootstrap3 components.
+Creates a `/styleguide/bootstrap3` page that renders the correct HTML for all bootstrap3 (v3.2.0) components.
 
-Create a `_my_component.html.erb` partial in the `views/effective/style_guide/` directory to add your own custom components.
+Use this page to ensure that your custom CSS theme looks good with the bootstrap components.
+
+Create a `_my_component.html.erb` partial in the `views/effective/style_guide/` or `views/effective/style_guide_bootstrap3/` directory to add your own custom components.
 
 Works with simple_form to ensure that the generated form HTML matches the bootstrap3 HTML.
 
@@ -37,14 +39,20 @@ You must include the Twitter Bootstrap3 Javascript and CSS assets on your own.  
 
 ## Usage
 
-Visit `/styleguide` to test how the bootstrap3 components look with your site's design (css theme).
+Visit `/styleguide` to test how the bootstrap4 components look with your site's design (css theme).
+
+Visit `/styleguide/bootstrap3` to test how the bootstrap3 components look with your site's design (css theme).
 
 
 ### Add Custom Components
 
-Create a `_my_component.html.erb` partial in the `views/effective/style_guide/` directory.
+Create a `_my_component.html.erb` partial in the `views/effective/style_guide/` or `views/effective/style_guide_bootstrap3/` directory.
 
 This file will be automatically detected and included in the `/styleguide` page.
+
+### effective_bootstrap
+
+Please google this gem for an effective bootstrap4 experience.
 
 
 ### simple_form
@@ -146,7 +154,6 @@ rescue_from Effective::AccessDenied do |exception|
 end
 ```
 
-
 ### Permissions
 
 The permissions you actually want to define are as follows (using CanCan):
@@ -156,7 +163,6 @@ if user.is?(:admin)
   can :show, Effective::StyleGuide
 end
 ```
-
 
 ## License
 
@@ -180,5 +186,4 @@ rake spec
 4. Push to the branch (`git push origin my-new-feature`)
 5. Bonus points for test coverage
 6. Create new Pull Request
-
 

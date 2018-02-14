@@ -1,0 +1,77 @@
+= form_with model: Effective::StyleGuide.new, url: '/' do |f|
+  %p
+    %label Text Field
+    = f.text_field :title
+
+  %p
+    %label Password
+    = f.password_field :password
+
+  %p
+    %label Checkbox
+    = f.check_box :archived
+
+  %p
+    %label Radio
+    = f.radio_button :archived, true
+    = f.radio_button :archived, false
+
+  %p
+    %label Date Field
+    = f.date_field :updated_at
+
+  %p
+    %label DateField
+    = f.datetime_field :updated_at
+
+  %p
+    %label Time
+    = f.time_field :updated_at
+
+  %p
+    %label Email
+    = f.email_field :email
+
+  %p
+    %label Telephone Field
+    = f.telephone_field :phone
+
+  %p
+    %label Url Field
+    = f.url_field :url
+
+  %p
+    %label File Field
+    = f.file_field :url
+
+  %p
+    %label Color
+    = f.color_field :email
+
+  %p
+    %label Select
+    = f.select :color, EffectiveStyleGuide.colors
+
+  %p
+    %label Multiple Select
+    = f.select :color, options_from_collection_for_select(EffectiveStyleGuide.colors, :to_s, :to_s, select: f.object.category), multiple: true
+
+  %p
+    %label Grouped Select
+    = f.select :color, EffectiveStyleGuide.grouped_colors
+
+  %p
+    %label Text Area
+    = f.text_area :title
+
+  %p
+    %label Collection Select
+    = f.collection_select :color, EffectiveStyleGuide.colors, :to_s, :to_s
+
+  %p
+    %label Collection Radio Buttons
+    = f.collection_radio_buttons :color, EffectiveStyleGuide.colors, :to_s, :to_s
+
+  %p
+    %label Collection Check Boxes
+    = f.collection_check_boxes :color, EffectiveStyleGuide.colors, :to_s, :to_s

@@ -52,8 +52,7 @@ This file will be automatically detected and included in the `/styleguide` page.
 
 ### effective_bootstrap
 
-Please google this gem for an effective bootstrap4 experience.
-
+Checkout effective_bootstrap (https://github.com/code-and-effect/effective_bootstrap) for an effective bootstrap4 experience.
 
 ### simple_form
 

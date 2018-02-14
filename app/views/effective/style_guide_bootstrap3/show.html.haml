@@ -10,7 +10,7 @@
     - @partials.each do |partial|
       %div.example{:id => "#{partial.parameterize}"}
         %span.example= partial.titleize
-        = render :partial => partial
+        = render partial: "effective/style_guide_bootstrap3/#{partial}"
 
     - 10.times do
       %br

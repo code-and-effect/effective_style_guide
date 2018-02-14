@@ -1,9 +1,0 @@
-%br
-- if defined?(EffectiveDatatables)
-  - if Gem::Version.new(EffectiveDatatables::VERSION) < Gem::Version.new('3.0')
-    = render_datatable Effective::Datatables::StyleGuide.new()
-  - else
-    = render_datatable EffectiveStyleGuideDatatable.new()
-
-- else
-  %p Please install the effective_datatables gem

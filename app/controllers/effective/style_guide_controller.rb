@@ -12,7 +12,7 @@ module Effective
 
       @page_title ||= 'Style Guide'
 
-      EffectiveStyleGuide.authorized?(self, :show, Effective::StyleGuide.new())
+      EffectiveStyleGuide.authorize!(self, :show, Effective::StyleGuide.new())
     end
 
     def bootstrap3
@@ -25,7 +25,7 @@ module Effective
 
       @page_title ||= 'Style Guide'
 
-      EffectiveStyleGuide.authorized?(self, :show, Effective::StyleGuide.new())
+      EffectiveStyleGuide.authorize!(self, :show, Effective::StyleGuide.new())
 
       render 'effective/style_guide_bootstrap3/show'
     end

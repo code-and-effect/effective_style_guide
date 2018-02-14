@@ -4,8 +4,7 @@ module Effective
 
     ATTRIBUTES = [
       :id, :title, :email, :password, :number, :range, :category, :content, :phone, :fax, :cell,
-      :url, :color, :color2, :color3,
-      :option1, :option2, :option3, :details,
+      :url, :color, :option1, :option2, :option3, :details,
       :archived, :drink, :food, :price, :updated_at, :publish_on, :static_text,
       :start_at, :end_at, :date, :time
     ]

@@ -8,6 +8,8 @@ module Effective
         name[1...name.index('.') || name.length] # remove the _ and .html.haml
       end.uniq.sort
 
+      @partials = @partials.reject { |p| p.start_with?('_') } # Remove any double __ partials
+
       @partials.delete('effective_datatable') unless defined?(EffectiveDatatables)
 
       @page_title ||= 'Style Guide'

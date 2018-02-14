@@ -23,14 +23,18 @@ module EffectiveStyleGuide
   end
 
   def self.foods
+    ['bacon', 'eggs', 'hash browns']
+  end
+
+  def self.drinks
     ['Coffee', 'Tea', 'Soda']
   end
 
   def self.grouped_colors
     {
-      'Top' => [['Red', 1], ['Orange', 2], ['Yellow', 3]],
-      'Middle' => [['Green', 4], ['Blue', 5], ['Indigo', 6]],
-      'Bottom' => [['Violet', 7]]
+      'Top' => [['red', 'red'], ['orange', 'orange'], ['yellow', 'yellow']],
+      'Middle' => [['green', 'green'], ['blue', 'blue'], ['indigo', 'indigo']],
+      'Bottom' => [['violet', 'violet']]
     }
   end
 

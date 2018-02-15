@@ -7,5 +7,9 @@ module EffectiveStyleGuide
       eval File.read("#{config.root}/config/effective_style_guide.rb")
     end
 
+    initializer 'effective_style_guide.assets' do |app|
+      Rails.application.config.assets.precompile += ['placeholder.png']
+    end
+
   end
 end

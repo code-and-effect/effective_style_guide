@@ -159,7 +159,7 @@ The permissions you actually want to define are as follows (using CanCan):
 
 ```ruby
 if user.is?(:admin)
-  can :show, Effective::StyleGuide
+  can [:index, :show], Effective::StyleGuide
 end
 ```
 

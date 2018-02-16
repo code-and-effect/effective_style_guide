@@ -1,6 +1,9 @@
 module Effective
   class StyleGuide < ActiveRecord::Base
-    acts_as_asset_box files: 1..6
+
+    if defined?(EffectiveAssets)
+      acts_as_asset_box files: 1..6
+    end
 
     ATTRIBUTES = [
       :id, :title, :email, :password, :number, :range, :category, :content, :phone, :fax, :cell,

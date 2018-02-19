@@ -1,5 +1,6 @@
 module Effective
   class StyleGuide < ActiveRecord::Base
+    include ActiveModel::Model
 
     if defined?(EffectiveAssets)
       acts_as_asset_box files: 1..6
@@ -16,8 +17,6 @@ module Effective
     validates *ATTRIBUTES, presence: true
 
     def initialize(*args)
-      super
-
       self.color = 'black'
     end
 

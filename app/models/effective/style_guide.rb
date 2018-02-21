@@ -1,5 +1,5 @@
 module Effective
-  class StyleGuide < ActiveRecord::Base
+  class StyleGuide
     include ActiveModel::Model
 
     if defined?(EffectiveAssets)
@@ -16,24 +16,8 @@ module Effective
     attr_accessor *ATTRIBUTES
     validates *ATTRIBUTES, presence: true
 
-    def initialize(*args)
-      self.color = 'black'
-    end
-
     def id
       object_id
-    end
-
-    def self.columns
-      @columns ||= []
-    end
-
-    def self.column_defaults
-      {}
-    end
-
-    def self.has_attribute?(*args)
-      false
     end
 
     def static_text

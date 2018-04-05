@@ -2,10 +2,6 @@ module Effective
   class StyleGuide
     include ActiveModel::Model
 
-    if defined?(EffectiveAssets)
-      acts_as_asset_box files: 1..6
-    end
-
     ATTRIBUTES = [
       :id, :title, :email, :password, :number, :range, :category, :content, :phone, :fax, :cell,
       :url, :color, :option1, :option2, :option3, :details,

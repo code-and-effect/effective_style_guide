@@ -69,11 +69,6 @@
       :collection => EffectiveStyleGuide.foods,
       :hint => 'please select one food (this is a radio_buttons field)'
 
-  - if defined?(EffectiveAssets)
-    = f.input :files,
-      :as => :asset_box,
-      :hint => 'please upload one or more files (this is an asset_box field from EffectiveAssets)'
-
   - if defined?(EffectiveFormInputs)
     = f.input :updated_at,
       :as => :effective_date_time_picker,
@@ -175,9 +170,6 @@
       :as => :radio_buttons,
       :collection => EffectiveStyleGuide.foods,
       :hint => 'please select one food (this is a radio_buttons field)'
-
-  - if defined?(EffectiveAssets)
-    = f.input :files, :as => :asset_box, :hint => 'please upload one or more files (this is an asset_box field from EffectiveAssets)'
 
   - if defined?(EffectiveFormInputs)
     = f.input :updated_at,

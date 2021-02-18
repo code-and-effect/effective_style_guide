@@ -1,5 +1,7 @@
 # Effective Style Guide
 
+NO LONGER MAINTAINED. This gem still works, but I wouldn't use this on a new project.
+
 Ensure that your custom CSS theme looks good with all Twitter Bootstrap html components.
 
 Creates a `/styleguide` page that renders the correct HTML for all bootstrap4 (v4.0.0) components.
@@ -185,4 +187,3 @@ rake spec
 4. Push to the branch (`git push origin my-new-feature`)
 5. Bonus points for test coverage
 6. Create new Pull Request
-
